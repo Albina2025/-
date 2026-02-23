@@ -1,12 +1,13 @@
-import { Modal, Button, Group, Select, Stack } from '@mantine/core';
+import { Modal, Button, Group,  Stack } from '@mantine/core';
 import { useState } from 'react';
+import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 
-interface FilterModalProps {
+interface AIFilterModalProps {
   opened: boolean;
   onClose: () => void;
 }
 
-export const FilterModal: React.FC<FilterModalProps> = ({ opened, onClose }) => {
+export const AiFilterModal: React.FC<AIFilterModalProps> = ({ opened, onClose }) => {
   const [subject, setSubject] = useState<string | null>(null);
   const [platform, setPlatform] = useState<string | null>(null);
 
@@ -18,15 +19,16 @@ export const FilterModal: React.FC<FilterModalProps> = ({ opened, onClose }) => 
   const handleApply = () => {
     console.log('Selected Subject:', subject);
     console.log('Selected Platform:', platform);
-    onClose(); // Закрыть модал после применения фильтров
+    onClose(); 
   };
 
   return (
-    <Modal opened={opened} onClose={onClose} title="Filter" size="sm" centered>
-      <Stack spacing="md">
-        <Select
-          label="Субъект"
-          placeholder="Выберите субъект"
+    <Modal opened={opened} onClose={onClose}  centered
+    style={{ width: "583px", height: "262px", }}
+    >
+      <Stack >
+        <FloatingSelect
+          labelText="Выберите субъект"
           value={subject}
           onChange={setSubject}
           data={[
@@ -35,9 +37,8 @@ export const FilterModal: React.FC<FilterModalProps> = ({ opened, onClose }) => 
           ]}
         />
 
-        <Select
-          label="Тип вычислительной платформы"
-          placeholder="Выберите тип"
+        <FloatingSelect
+          labelText="Тип вычислительной платформы"
           value={platform}
           onChange={setPlatform}
           data={[
@@ -46,11 +47,11 @@ export const FilterModal: React.FC<FilterModalProps> = ({ opened, onClose }) => 
           ]}
         />
 
-        <Group position="apart" mt="md">
-          <Button color="gray" onClick={handleReset}>
+        <Group  >
+          <Button color="black" onClick={handleReset}>
             Сбросить
           </Button>
-          <Button onClick={handleApply}>Применить фильтры</Button>
+          <Button color="black" onClick={handleApply}>Применить фильтры</Button>
         </Group>
       </Stack>
     </Modal>

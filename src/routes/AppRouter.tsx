@@ -28,9 +28,8 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { LoginPage } from "../pages/LoginPage";
-import { MainLayout } from "../components/layout/MainLayout";
-import { HomePage } from "../pages/HomePage";
+import { LoginPage } from "../pages/login/LoginPage";
+import { MainLayout } from "../layout/MainLayout";
 import AIPage from "../pages/objects/AIPage";
 import SoftwarePage from "../pages/objects/SoftwarePage";
 import PrivateSectorPage from "../pages/subjects/PrivateSectorPage";
@@ -44,8 +43,7 @@ export default function AppRouter() {
 
         <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
-            <Route path="/home" element={<HomePage />} />
-             <Route path="/objects/ai" element={<AIPage />} />
+            <Route path="/objects/ai" element={<AIPage />} />
             <Route path="/objects/software" element={<SoftwarePage />} />
             <Route path="/subjects/private-sector" element={<PrivateSectorPage />} />
           </Route>

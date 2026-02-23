@@ -1,2 +1,1 @@
-export {LoginPage} from "./LoginPage"
-export {HomePage} from "./HomePage"
+export {LoginPage} from "./login/LoginPage"
