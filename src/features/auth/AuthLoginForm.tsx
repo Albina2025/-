@@ -39,7 +39,7 @@ export const AuthLoginForm = () => {
 
         dispatch(setTokens({ accessToken, refreshToken }));
 
-      navigate("/home");
+      navigate("/subjects/private-sector");
     } catch (err: unknown) {
         const error = err as AxiosError<{ message: string }>;
         console.error("Login failed", error);

@@ -12,7 +12,7 @@ interface MenuItem {
 export const Sidebar: React.FC = () => {
   const location = useLocation();
 
-  // Папки для открытия/закрытия
+ 
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({
     objects: true,
     subjects: true,
@@ -23,17 +23,18 @@ export const Sidebar: React.FC = () => {
   };
 
   const menu: MenuItem[] = [
+    
+    {
+      label: 'Субъекты',
+      children: [
+        { label: 'Частный сектор', path: '/subjects/private-sector' },
+      ],
+    },
     {
       label: 'Объекты',
       children: [
         { label: 'ИИ', path: '/objects/ai' },
         { label: 'ПО', path: '/objects/software' },
-      ],
-    },
-    {
-      label: 'Субъекты',
-      children: [
-        { label: 'Частный сектор', path: '/subjects/private-sector' },
       ],
     },
   ];
@@ -46,13 +47,14 @@ export const Sidebar: React.FC = () => {
 
       const isOpen = parentKey ? openStates[parentKey.toLowerCase()] : openStates[item.label.toLowerCase()];
 
-      // Active если путь совпадает
+     
       const isActive = item.path ? location.pathname === item.path : false;
 
       return (
         <div key={key}>
           <NavLink
             label={item.label}
+            active={isActive}
             rightSection={
               hasChildren
                 ? isOpen
@@ -61,22 +63,18 @@ export const Sidebar: React.FC = () => {
                 : undefined
             }
             onClick={() => hasChildren && toggleFolder(item.label.toLowerCase())}
-            component={item.path ? Link : undefined}
-            to={item.path || undefined}
-            active={isActive}
-            style={{
-              borderRadius: 12,
-              padding: '8px 12px',
-              fontWeight: hasChildren ? 600 : 500,
-              backgroundColor: isActive ? '#e7f5ff' : 'transparent',
-              border: isActive ? '1px solid #228be6' : 'none',
-              marginBottom: 4,
-            }}
+            renderRoot={(props) =>
+              item.path ? (
+                <Link {...props} to={item.path} />
+              ) : (
+                <div {...props} />
+              )
+            }
           />
 
           {hasChildren && (
             <Collapse in={isOpen}>
-              <Stack spacing={4} pl={16} mt={4}>
+              <Stack gap={4} pl={16} mt={4} >
                 {renderMenu(item.children!, item.label.toLowerCase())}
               </Stack>
             </Collapse>

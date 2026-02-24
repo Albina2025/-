@@ -1,74 +1,48 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { TableData } from '../../layout/tableData/TableData';
 import { SoftwareAddModal } from '../../features/object/software/SoftwareAddModal';
 import { SoftwareFilterModal } from '../../features/object/software/SoftwareFilterModal';
+import type { RootState } from '../../store/index';
+import type{ SoftwareType } from '../../types/dataTypes';
 
-
-interface SoftwareType {
-  action: string;
-  subject: string;
-  name: string;
-  purpose: string;
-  manufacturer: string;
-  supplier: string;
-  purchaseDate: string;
-  purchaseAmount: number;
-  currency: string;
-  version: string;
-  lastUpdateDate: string;
-  licenseType: string;
-  licenseEndDate: string;
-  licenseCount: number;
-}
-
-const SoftwarePage: React.FC = () => {
+export const SoftwarePage: React.FC = () => {
   const [openedAdd, setOpenedAdd] = useState(false);
   const [openedFilter, setOpenedFilter] = useState(false);
-//   const [data, setData] = useState<SoftwareType[]>([]);
 
- const columns: { key: keyof SoftwareType; label: string }[] = [
-  { key: 'action', label: 'Действия' },
-  { key: 'subject', label: 'Субъект' },
-  { key: 'name', label: 'Название ПО' },
-  { key: 'purpose', label: 'Назначение ПО' },
-  { key: 'manufacturer', label: 'Производитель ПО' },
-  { key: 'supplier', label: 'Поставщик' },
-  { key: 'purchaseDate', label: 'Дата приобретения' },
-  { key: 'purchaseAmount', label: 'Сумма приобретения' },
-  { key: 'currency', label: 'Валюта' },
-  { key: 'version', label: 'Версия' },
-  { key: 'lastUpdateDate', label: 'Дата обновления' },
-  { key: 'licenseType', label: 'Тип лицензии' },
-  { key: 'licenseEndDate', label: 'Окончание лицензии' },
-  { key: 'licenseCount', label: 'Количество лицензий' },
-];
+ 
+  const allItems = useSelector((state: RootState) => state.data.items);
 
 
-const data: SoftwareType[] = [ 
-    { action: 'Create', 
-        subject: 'Private', 
-        name: 'Software 1', 
-        purpose: 'Management', 
-        manufacturer: 'Company A', 
-        supplier: 'Supplier A', 
-        purchaseDate: '2024-01-01', 
-        purchaseAmount: 1000, 
-        currency: 'USD', 
-        version: '1.0', 
-        lastUpdateDate: '2024-06-01', 
-        licenseType: 'Annual', 
-        licenseEndDate: '2025-01-01', 
-        licenseCount: 10, 
-    }, 
-    
-];
+  const softwareData: SoftwareType[] = allItems
+    .filter((item) => item.type === 'software')
+    .map((item) => item.data as SoftwareType);
 
+  const columns: { 
+        key: keyof SoftwareType | 'action'; 
+        label: string 
+    }[] = [
+    { key: 'action', label: 'Действия' },
+    { key: 'subject', label: 'Субъект' },
+    { key: 'name', label: 'Название ПО' },
+    { key: 'purpose', label: 'Назначение ПО' },
+    { key: 'manufacturer', label: 'Производитель ПО' },
+    { key: 'supplier', label: 'Поставщик программного обеспечения' },
+    { key: 'purchaseDate', label: 'Дата приобретения' },
+    { key: 'purchaseAmount', label: 'Сумма приобретения' },
+    { key: 'currency', label: 'Валюта суммы' },
+    { key: 'lastUpdateDate', label: 'Дата последнего обновления ПО' },
+    { key: 'licenseEndDate', label: 'Дата окончания срока действия лицензии' },
+    { key: 'version', label: 'Версия' },
+    { key: 'licenseType', label: 'Тип лицензии ПО' },
+    { key: 'licenseCount', label: 'Количество лицензий ПО' },
+  ];
 
   return (
     <>
       <TableData
         columns={columns}
-        data={data}
+        data={softwareData}
         onAdd={() => setOpenedAdd(true)}
         onFilter={() => setOpenedFilter(true)}
       />
@@ -76,7 +50,6 @@ const data: SoftwareType[] = [
       <SoftwareAddModal
         opened={openedAdd}
         onClose={() => setOpenedAdd(false)}
-        // onSubmit={handleAdd}
       />
 
       <SoftwareFilterModal
@@ -87,4 +60,3 @@ const data: SoftwareType[] = [
   );
 };
 
-export default SoftwarePage;

@@ -23,35 +23,55 @@ export const AiFilterModal: React.FC<AIFilterModalProps> = ({ opened, onClose })
   };
 
   return (
-    <Modal opened={opened} onClose={onClose}  centered
-    style={{ width: "583px", height: "262px", }}
+    <Modal 
+        opened={opened} 
+        onClose={onClose} 
+        radius={15}
+        withCloseButton={false}   
+        centered
+        size="lg"
     >
-      <Stack >
+      <Stack gap="xs">
         <FloatingSelect
-          labelText="Выберите субъект"
-          value={subject}
-          onChange={setSubject}
-          data={[
-            { value: 'private', label: 'Private Sector' },
-            { value: 'public', label: 'Public Sector' },
-          ]}
+            labelText="Выберите субъект"
+            radius={10}
+            value={subject}
+            onChange={setSubject}
+            data={[
+                { value: 'private', label: 'Private Sector' },
+                { value: 'public', label: 'Public Sector' },
+            ]}
         />
 
         <FloatingSelect
-          labelText="Тип вычислительной платформы"
-          value={platform}
-          onChange={setPlatform}
-          data={[
-            { value: 'ai', label: 'AI' },
-            { value: 'software', label: 'Software' },
-          ]}
+            labelText="Тип вычислительной платформы"
+            radius={10}
+            value={platform}
+            onChange={setPlatform}
+            data={[
+                { value: 'ai', label: 'AI' },
+                { value: 'software', label: 'Software' },
+            ]}
         />
 
-        <Group  >
-          <Button color="black" onClick={handleReset}>
-            Сбросить
-          </Button>
-          <Button color="black" onClick={handleApply}>Применить фильтры</Button>
+        <Group mt="md" grow>
+            <Button
+                color="black"
+                onClick={handleReset}
+                radius="md"
+                fullWidth
+            >
+                Сбросить
+            </Button>
+
+            <Button
+                color="black"
+                onClick={handleApply}
+                radius="md"
+                fullWidth
+            >
+                Применить фильтры
+            </Button>
         </Group>
       </Stack>
     </Modal>

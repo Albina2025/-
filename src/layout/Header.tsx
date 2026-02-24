@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Group, Button, Select } from "@mantine/core";
 import { useMantineColorScheme } from '@mantine/core';
@@ -20,26 +18,29 @@ export const Header: React.FC = () => {
         backgroundColor: isDark ? '#1A1B1E' : '#ffffff',
         borderBottom: '2px solid #e9ecef',
         boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+        //  color: '#fff',
       }}
     >
-      {/* Логотип */}
+
       <div style={{ fontWeight: 700, fontSize: 28 }}>
         КЦОКБ
       </div>
 
-      <Group gap="md">
+      <Group gap="md"  color='#fff'>
 
         <Select
-          value={i18n.language}   // ← ЭҢ МААНИЛҮҮ
+        
+          value={i18n.language}   
           defaultValue="ru"
           onChange={(lang) => lang && i18n.changeLanguage(lang)}
           data={[
             { value: 'ru', label: 'Русский' },
             { value: 'kg', label: 'Кыргызча' },
+            
           ]}
           size="md"
           radius="xl"
-          style={{ width: 160 }}
+          style={{ width: 160,  }}
         />
 
 

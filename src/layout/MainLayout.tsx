@@ -10,6 +10,7 @@ export const MainLayout = () => {
       navbar={{ width: 280,  breakpoint: 'sm',}}
       header={{ height: 130 }}
       style={{ overflow: 'visible' }} 
+      
     >
       <AppShell.Header>
         <Header />

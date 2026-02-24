@@ -23,7 +23,14 @@ export const SoftwareFilterModal: React.FC<SoftwareFilterModalProps> = ({ opened
   };
 
   return (
-    <Modal opened={opened} onClose={onClose} size="sm" centered>
+    <Modal 
+        opened={opened} 
+        onClose={onClose}
+        size="lg" 
+        radius={15}
+        centered
+        withCloseButton={false}
+    >
       <Stack >
         <FloatingSelect
           labelText="Субъект"
@@ -38,11 +45,13 @@ export const SoftwareFilterModal: React.FC<SoftwareFilterModalProps> = ({ opened
 
        
 
-        <Group mt="md">
-          <Button color="black" onClick={handleReset}>
-            Сбросить
-          </Button>
-          <Button color="black" onClick={handleApply}>Применить фильтры</Button>
+        <Group mt="md" grow>
+            <Button color="black" onClick={handleReset} radius={"md"}>
+                Сбросить
+            </Button>
+            <Button color="black" onClick={handleApply} radius={"md"}>
+                Применить фильтры
+            </Button>
         </Group>
       </Stack>
     </Modal>

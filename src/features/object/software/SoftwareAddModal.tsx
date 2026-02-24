@@ -1,12 +1,15 @@
 import {
-  Modal,
-  Stack,
-  Group,
-  Select,
-  Button,
-  Grid,
+    Modal,
+    Stack,
+    Group,
+    Box,
+    Button,
+    Grid,
 } from '@mantine/core';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../../store/dataSlice';
+import { v4 as uuidv4 } from 'uuid';
 import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 
@@ -19,11 +22,72 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
   opened,
   onClose,
 }) => {
-  const [subject, setSubject] = useState<string | null>(null);
-  const [currency, setCurrency] = useState<string | null>(null);
-  const [licenseType, setLicenseType] = useState<string | null>(null);
+  const dispatch = useDispatch();
+
+  const [form, setForm] = useState({
+    subject: '',
+    name: '',
+    purpose: '',
+    manufacturer: '',
+    supplier: '',
+    purchaseDate: '',
+    purchaseAmount: '',
+    currency: '',
+    version: '',
+    lastUpdateDate: '',
+    licenseType: '',
+    licenseEndDate: '',
+    licenseCount: '',
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
   const handleSubmit = () => {
+    dispatch(
+      addItem({
+        id: uuidv4(),
+        type: 'software',
+        data: {
+          action: 'Create',
+          subject: form.subject,
+          name: form.name,
+          purpose: form.purpose,
+          manufacturer: form.manufacturer,
+          supplier: form.supplier,
+          purchaseDate: form.purchaseDate,
+          purchaseAmount: Number(form.purchaseAmount),
+          currency: form.currency,
+          version: form.version,
+          lastUpdateDate: form.lastUpdateDate,
+          licenseType: form.licenseType,
+          licenseEndDate: form.licenseEndDate,
+          licenseCount: Number(form.licenseCount),
+        },
+      })
+    );
+
+
+    setForm({
+      subject: '',
+      name: '',
+      purpose: '',
+      manufacturer: '',
+      supplier: '',
+      purchaseDate: '',
+      purchaseAmount: '',
+      currency: '',
+      version: '',
+      lastUpdateDate: '',
+      licenseType: '',
+      licenseEndDate: '',
+      licenseCount: '',
+    });
+
     onClose();
   };
 
@@ -31,121 +95,184 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
     <Modal
       opened={opened}
       onClose={onClose}
+      radius={15}
       centered
-      size="xl"
+      size={1200}
       withCloseButton={false}
     >
       <Stack>
+        <Box
+          p="md"
+          style={{
+            border: '1px solid #e9ecef',
+            borderRadius: 8,
+            backgroundColor: '#fafbfb',
+          }}
+        >
+          <Group justify="center">
+            <h2>Добавление ПО</h2>
+          </Group>
 
-        {/* 🔹 Title */}
-        <Group justify="center">
-          <h2>Добавление ПО</h2>
-        </Group>
-
-        <Grid>
-
-        <Grid.Col span={6}>
-            <FloatingSelect
+          <Grid>
+            <Grid.Col span={6}>
+              <FloatingSelect
                 labelText="Субъект"
-                value={subject}
-                onChange={setSubject}
+                value={form.subject}
+                onChange={(value) =>
+                   handleChange('subject', value || '')
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                labelText="Название ПО"
+                value={form.name}
+                onChange={(e) =>
+                  handleChange('name', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                labelText="Назначение ПО"
+                value={form.purpose}
+                onChange={(e) =>
+                  handleChange('purpose', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                labelText="Производитель ПО"
+                value={form.manufacturer}
+                onChange={(e) =>
+                  handleChange('manufacturer', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                labelText="Поставщик программного обеспечения"
+                value={form.supplier}
+                onChange={(e) =>
+                  handleChange('supplier', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                type="date"
+                labelText="Дата приобретения"
+                value={form.purchaseDate}
+                onChange={(e) =>
+                  handleChange('purchaseDate', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingInput
+                type="number"
+                labelText="Сумма приобретения"
+                value={form.purchaseAmount}
+                onChange={(e) =>
+                  handleChange('purchaseAmount', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+
+            <Grid.Col span={6}>
+              <FloatingSelect
+                labelText="Валюта суммы"
+                value={form.currency}
+                onChange={(value) =>
+                  handleChange('currency', value || '')
+                }
                 data={[
-                { value: 'private', label: 'Private Sector' },
-                { value: 'public', label: 'Public Sector' },
+                  { value: 'сом', label: 'Сом' },
+                  { value: 'евро', label: 'Евро' },
+                  { value: 'доллар', label: 'Доллар' },
                 ]}
-            />
-        </Grid.Col>
+              />
+            </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Название ПО" />
-          </Grid.Col>
+            <Grid.Col span={6}>
+              <FloatingInput
+                type="date"
+                labelText="Дата последнего обновления ПО"
+                value={form.lastUpdateDate}
+                onChange={(e) =>
+                  handleChange('lastUpdateDate', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Назначение ПО" />
-          </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Производитель ПО" />
-          </Grid.Col>
+            <Grid.Col span={6}>
+              <FloatingInput
+                type="date"
+                labelText="Дата окончания срока действия лицензии"
+                value={form.licenseEndDate}
+                onChange={(e) =>
+                  handleChange('licenseEndDate', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Поставщик ПО" />
-          </Grid.Col>
+            
+            <Grid.Col span={6}>
+              <FloatingInput
+                labelText="Версия ПО"
+                value={form.version}
+                onChange={(e) =>
+                  handleChange('version', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput
-              labelText="Дата приобретения"
-              type="date"
-            />
-          </Grid.Col>
+            
+           <Grid.Col span={6}>
+              <FloatingSelect
+                labelText="Тип лицензии"
+                value={form.licenseType}
+                onChange={(value) =>
+                  handleChange('licenseType', value || '')
+                }
+                data={[
+                  { value: 'commercial', label: 'Коммерческая' },
+                  { value: 'open', label: 'Open Source' },
+                  { value: 'trial', label: 'Триал' },
+                ]}
+              />
+            </Grid.Col>
 
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Сумма приобретения" />
-          </Grid.Col>
 
-          <Grid.Col span={6}>
-            <Select
-              placeholder="Валюта суммы"
-              value={currency}
-              onChange={setCurrency}
-              data={[
-                { value: 'сом', label: 'Сом' },
-                { value: 'евро', label: 'Евро' },
-                { value: 'доллар', label: 'Доллар' },
-              ]}
-            />
-          </Grid.Col>
+            <Grid.Col span={12}>
+              <FloatingInput
+                type="number"
+                labelText="Количество лицензий ПО"
+                value={form.licenseCount}
+                onChange={(e) =>
+                  handleChange('licenseCount', e.currentTarget.value)
+                }
+              />
+            </Grid.Col>
+          </Grid>
+        </Box>
 
-          <Grid.Col span={6}>
-            <FloatingInput
-              labelText="Дата последнего обновления"
-              type="date"
-            />
-          </Grid.Col>
-
-          <Grid.Col span={6}>
-            <FloatingInput
-              labelText="Дата окончания лицензии"
-              type="date"
-            />
-          </Grid.Col>
-
-          <Grid.Col span={6}>
-            <FloatingInput labelText="Версия ПО" />
-          </Grid.Col>
-
-          <Grid.Col span={6}>
-            <Select
-              placeholder="Тип лицензии"
-              value={licenseType}
-              onChange={setLicenseType}
-              data={[
-                { value: 'commercial', label: 'Коммерческая' },
-                { value: 'open', label: 'Open Source' },
-                { value: 'trial', label: 'Триал' },
-              ]}
-            />
-          </Grid.Col>
-
-          <Grid.Col span={6}>
-            <FloatingInput
-              labelText="Количество лицензий"
-              type="number"
-            />
-          </Grid.Col>
-
-        </Grid>
-
-        {/* 🔹 Buttons */}
-        <Group justify="center" mt="md">
+        <Group justify="center">
           <Button variant="default" onClick={onClose}>
             Отменить
           </Button>
-          <Button onClick={handleSubmit}>
+          <Button color="black" onClick={handleSubmit}>
             Подтвердить
           </Button>
         </Group>
-
       </Stack>
     </Modal>
   );

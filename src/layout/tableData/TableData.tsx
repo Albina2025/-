@@ -16,6 +16,8 @@ interface TableDataProps<T> {
   onFilter?: () => void;
 }
 
+ 
+
 export function TableData<T>({
   columns,
   data,
@@ -36,8 +38,8 @@ export function TableData<T>({
   return (
     <>
       <Group mb="sm">
-        {onFilter && <Button onClick={onFilter}>Фильтры</Button>}
-        {onAdd && <Button onClick={onAdd}>Добавить</Button>}
+        {onFilter && <Button onClick={onFilter} color='black' radius={'10'}>Фильтры</Button>}
+        {onAdd && <Button onClick={onAdd} color='black' radius={'10'}>Добавить</Button>}
       </Group>
 
       <Box
@@ -47,6 +49,7 @@ export function TableData<T>({
           maxWidth: '100%',  
           border: '1px solid #dee2e6',
           borderRadius: 8,
+          //  color: '#fff',
         }}
       >
         <Table
@@ -65,7 +68,7 @@ export function TableData<T>({
                   key={String(col.key)}
                   style={{
                     whiteSpace: 'nowrap',
-                    background: '#f8f9fa',
+                    // color: '#fff',
                     border: '1px solid #dee2e6',  
                     padding: '8px',
                   }}
@@ -94,10 +97,12 @@ export function TableData<T>({
               </tr>
             ))}
           </tbody>
+
+        
         </Table>
       </Box>
 
-      {/* PAGINATION */}
+     
       <Flex justify="space-between" align="center" mt="md">
         <div>Всего данных: {data.length}</div>
 
@@ -110,6 +115,7 @@ export function TableData<T>({
 
           <Select
             value={pageSize}
+            // color='#fff'
             onChange={(value) => {
               if (value) {
                 setPageSize(value);
