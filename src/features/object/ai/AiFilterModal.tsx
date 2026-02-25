@@ -1,6 +1,9 @@
-import { Modal, Button, Group,  Stack } from '@mantine/core';
+import {  Group,  Stack } from '@mantine/core';
 import { useState } from 'react';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
+import { BaseModal } from '../../../UI/modal/BaseModal';
+import { BaseButton } from '../../../UI/button/BaseButton';
+
 
 interface AIFilterModalProps {
   opened: boolean;
@@ -23,7 +26,7 @@ export const AiFilterModal: React.FC<AIFilterModalProps> = ({ opened, onClose })
   };
 
   return (
-    <Modal 
+    <BaseModal
         opened={opened} 
         onClose={onClose} 
         radius={15}
@@ -55,25 +58,23 @@ export const AiFilterModal: React.FC<AIFilterModalProps> = ({ opened, onClose })
         />
 
         <Group mt="md" grow>
-            <Button
-                color="black"
+            <BaseButton
                 onClick={handleReset}
-                radius="md"
                 fullWidth
+                variantType="primary"
             >
                 Сбросить
-            </Button>
+            </BaseButton>
 
-            <Button
-                color="black"
+            <BaseButton
                 onClick={handleApply}
-                radius="md"
                 fullWidth
+                variantType="primary"
             >
                 Применить фильтры
-            </Button>
+            </BaseButton>
         </Group>
       </Stack>
-    </Modal>
+    </BaseModal>
   );
 };

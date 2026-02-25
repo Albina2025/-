@@ -1,7 +1,8 @@
-import { Modal, Button, Group, Stack, Switch } from '@mantine/core';
+import { Button, Group, Stack, Switch } from '@mantine/core';
 import { useState } from 'react';
 import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { IconCheck, IconX } from '@tabler/icons-react';
+import { BaseModal } from '../../../UI/modal/BaseModal';
 
 interface PrivateSectorFilterProps {
   opened: boolean;
@@ -39,7 +40,7 @@ export const PrivateSectorFilterModal: React.FC<PrivateSectorFilterProps> = ({
   };
 
   return (
-    <Modal
+    <BaseModal
       opened={opened}
       onClose={onClose}
       centered
@@ -138,6 +139,6 @@ export const PrivateSectorFilterModal: React.FC<PrivateSectorFilterProps> = ({
         </Group>
 
       </Stack>
-    </Modal>
+    </BaseModal>
   );
 };

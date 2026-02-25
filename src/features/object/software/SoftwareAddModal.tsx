@@ -1,5 +1,4 @@
 import {
-    Modal,
     Stack,
     Group,
     Box,
@@ -12,6 +11,7 @@ import { addItem } from '../../../store/dataSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
+import { BaseModal } from '../../../UI/modal/BaseModal';
 
 interface SoftwareAddModalProps {
   opened: boolean;
@@ -92,7 +92,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
   };
 
   return (
-    <Modal
+    <BaseModal
       opened={opened}
       onClose={onClose}
       radius={15}
@@ -104,9 +104,8 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
         <Box
           p="md"
           style={{
-            border: '1px solid #e9ecef',
+            border: '1px solid #303d43',
             borderRadius: 8,
-            backgroundColor: '#fafbfb',
           }}
         >
           <Group justify="center">
@@ -274,6 +273,6 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
           </Button>
         </Group>
       </Stack>
-    </Modal>
+    </BaseModal>
   );
 };

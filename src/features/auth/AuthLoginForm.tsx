@@ -16,15 +16,18 @@ import { api } from "../../api/axios";
 import { setTokens } from "../../store/authSlice";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import type { AxiosError } from "axios";
+import { useMantineColorScheme } from '@mantine/core';
 
 export const AuthLoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const { colorScheme } = useMantineColorScheme();
+    const isDark = colorScheme === 'dark';
 
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +56,7 @@ export const AuthLoginForm = () => {
     <div
       style={{
         minHeight: "100vh",
-        background: "#0f1a1f",
+        background: isDark ? "#0e1315" : "#f3f3f3",
         display: "flex",
         alignItems: "center",
       }}
@@ -61,8 +64,9 @@ export const AuthLoginForm = () => {
       <Container size="lg">
         <Paper
           radius="lg"
+           p="xl"
           style={{
-            background: "#162126",
+            background: isDark ? "#161d21" : "#fdfdfd",
             width: 1100,
             padding: "32px 16px 32px 16px",
           }}
@@ -82,14 +86,18 @@ export const AuthLoginForm = () => {
               }}
             >
               <img
-                src="http://10.111.70.97:3004/public/logo_light.svg"
+                 src={
+                    isDark
+                    ? "http://10.111.70.97:3004/public/logo_light.svg"
+                    : "http://10.111.70.97:3004/public/logo_dark.svg"
+                }
                 alt="logo"
                 style={{ width: 200 }}
               />
               <Text
                 size="lg"
+                c={isDark ? "white" : "dark"}
                 style={{
-                  color: "white",
                   textAlign: "center",
                   letterSpacing: "-0.2px",
                   lineHeight: 1.4,
@@ -101,8 +109,8 @@ export const AuthLoginForm = () => {
 
               <Text
                 size="lg"
+                c={isDark ? "white" : "dark"}
                 style={{
-                  color: "white",
                   textAlign: "center",
                   letterSpacing: "-0.2px",
                   lineHeight: 1.4,
@@ -119,9 +127,12 @@ export const AuthLoginForm = () => {
               span={{ base: 12, md: 6 }}
               style={{ width: 546, height: 416, padding: "32px 16px 32px 16px" }}
             >
-              <Paper radius="md" style={{ background: "#162126" }}>
+              <Paper radius="md"  
+                style={{
+                    background: "transparent",
+                }}>
                 <Stack style={{ display: "flex", gap: 60 }}>
-                  <Title order={2} ta="center" c="white">
+                  <Title order={2} ta="center"  c={isDark ? "white" : "dark"}>
                     Авторизация
                   </Title>
 
@@ -137,14 +148,13 @@ export const AuthLoginForm = () => {
                       required
                       styles={{
                         input: {
-                          backgroundColor: "#162126",
-                          color: "white",
-                          height: 48,
-                          borderRadius: 16,
-                          fontSize: 20,
-                          padding: "0 15px",
+                            background: "transparent",
+                            height: 48,
+                            borderRadius: 16,
+                            fontSize: 20,
+                            padding: "0 15px",
                         },
-                        label: { color: "white", fontSize: 14, marginBottom: 4 },
+                        label: { fontSize: 14, marginBottom: 4 },
                       }}
                     />
 
@@ -156,17 +166,16 @@ export const AuthLoginForm = () => {
                       required
                       styles={{
                         input: {
-                          backgroundColor: "#162126",
-                          color: "white",
-                          height: 48,
-                          borderRadius: 16,
-                          fontSize: 20,
-                          padding: "0 15px",
+                            background: "transparent",
+                            height: 48,
+                            borderRadius: 16,
+                            fontSize: 20,
+                            padding: "0 15px",
                         },
                         label: { color: "white", fontSize: 14, marginBottom: 4 },
                       }}
                       visibilityToggleIcon={({ reveal }) =>
-                        reveal ? <IconEyeOff size={24} color="white" /> : <IconEye size={24} color="white" />
+                        reveal ? <IconEye size={24} /> : <IconEyeOff size={24}   />
                       }
                     />
 
@@ -177,10 +186,10 @@ export const AuthLoginForm = () => {
                       fullWidth
                       style={{
                         height: 44,
-                        backgroundColor: "#fff",
-                        color: "black",
                         borderRadius: 16,
                         fontSize: 20,
+                        backgroundColor: isDark ? "#ffffff" : "#000000",
+                        color: isDark ? "#000000" : "#ffffff",
                       }}
                       disabled={loading}
                     >

@@ -12,13 +12,10 @@ export const Header: React.FC = () => {
   return (
     <Group
       justify="space-between"
-      px="xl"
+      // px="xl"
       style={{
         height: '100%',
-        backgroundColor: isDark ? '#1A1B1E' : '#ffffff',
-        borderBottom: '2px solid #e9ecef',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-        //  color: '#fff',
+         maxWidth: '100%',  
       }}
     >
 
@@ -40,7 +37,16 @@ export const Header: React.FC = () => {
           ]}
           size="md"
           radius="xl"
-          style={{ width: 160,  }}
+          w={160}
+          styles={{
+            input: {
+              backgroundColor: isDark ? '#161d21' : '#fdfdfd',
+              color: isDark ? '#fff' : '#000',
+            },
+            dropdown: {
+              backgroundColor: isDark ? '#161d21' : '#ffffff',
+            },
+          }}
         />
 
 

@@ -1,5 +1,5 @@
 import {
-  Modal,
+ 
   Stack,
   Group,
   Box,
@@ -12,6 +12,7 @@ import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../store/dataSlice';
+import { BaseModal } from '../../../UI/modal/BaseModal';
 
 interface PrivateSectorAddModalProps {
   opened: boolean;
@@ -63,7 +64,7 @@ export const PrivateSectorAddModal: React.FC<
   };
 
   return (
-    <Modal
+    <BaseModal
       opened={opened}
       onClose={onClose}
       radius={15}
@@ -75,9 +76,8 @@ export const PrivateSectorAddModal: React.FC<
         <Box
           p="md"
           style={{
-            border: '1px solid #e9ecef',
+            border: '1px solid #303d43',
             borderRadius: 8,
-            backgroundColor: '#fafbfb',
           }}
         >
           <Title order={5} ta="center" mb="md">
@@ -140,6 +140,6 @@ export const PrivateSectorAddModal: React.FC<
           </Button>
         </Group>
       </Stack>
-    </Modal>
+    </BaseModal>
   );
 };

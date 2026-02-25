@@ -2,6 +2,7 @@ import { Stack, NavLink, Collapse } from '@mantine/core';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { IconChevronDown, IconChevronRight } from '@tabler/icons-react';
+import { useMantineColorScheme } from '@mantine/core';
 
 interface MenuItem {
   label: string;
@@ -11,7 +12,8 @@ interface MenuItem {
 
 export const Sidebar: React.FC = () => {
   const location = useLocation();
-
+  const { colorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === "dark";
  
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({
     objects: true,
@@ -50,11 +52,30 @@ export const Sidebar: React.FC = () => {
      
       const isActive = item.path ? location.pathname === item.path : false;
 
+
       return (
-        <div key={key}>
+        <div key={key}
+          style={{
+            background: isDark ? "#161d21" : "#fdfdfd",
+            border: `1px solid ${isDark ? "#161d21" : "#d9d9d9"}`,
+            color: isDark ? "#ffffff" : "#000000",
+            borderRadius: 10,
+            padding: 5,
+        }}
+        >
           <NavLink
             label={item.label}
             active={isActive}
+            styles={{
+              root: {
+                borderRadius: 8,
+                color: isDark ? "#ffffff" : "#000000", 
+
+                '&:hover': {
+                  backgroundColor: isDark ? '#2a2f33' : '#f1f3f5',
+                },
+              },
+            }}
             rightSection={
               hasChildren
                 ? isOpen
@@ -74,7 +95,11 @@ export const Sidebar: React.FC = () => {
 
           {hasChildren && (
             <Collapse in={isOpen}>
-              <Stack gap={4} pl={16} mt={4} >
+              <Stack gap={4} pl={16} mt={4} 
+                style={{
+                  borderLeft: isDark ? '1px solid #2c2f33' : '1px solid #dee2e6',
+                }}
+              >
                 {renderMenu(item.children!, item.label.toLowerCase())}
               </Stack>
             </Collapse>

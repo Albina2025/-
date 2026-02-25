@@ -1,10 +1,8 @@
 import {
-    Modal,
     Stack,
     Group,
     TextInput,
     Switch,
-    Button,
     Grid,
     Box,
     Title,
@@ -16,6 +14,8 @@ import { useDispatch } from 'react-redux';
 import  {  addItem } from '../../../store/dataSlice';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { IconCheck, IconX } from '@tabler/icons-react';
+import { BaseModal } from '../../../UI/modal/BaseModal';
+import { BaseButton } from '../../../UI/button/BaseButton';
 
 interface AiAddModalProps {
     opened: boolean;
@@ -104,7 +104,7 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
   };
 
   return (
-    <Modal
+    <BaseModal
       opened={opened}
       onClose={onClose}
       size={1200} 
@@ -118,10 +118,8 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
       <Box
         p="md"
         style={{
-          border: '1px solid #e9ecef',
-          borderRadius: 8,
-          backgroundColor: '#fafbfb',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            border: '1px solid #303d43',
+            borderRadius: 8,
         }}
       >
         <Stack gap="lg">
@@ -135,9 +133,8 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
           <Box
             p="md"
             style={{
-              border: '1px solid #e9ecef',
-              borderRadius: 8,
-              backgroundColor: '#f8f9fa',
+                border: '1px solid #303d43',
+                borderRadius: 8,
             }}
           >
             <Stack gap="md">
@@ -264,7 +261,7 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
           <Box
             p="md"
             style={{
-              border: '1px solid #e9ecef',
+              border: '1px solid #303d43',
               borderRadius: 8,
             }}
           >
@@ -361,16 +358,22 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
           </Box>
 
           <Group justify="center" mt="md">
-            <Button variant="default" onClick={onClose}>
+            <BaseButton 
+                variantType="secondary" 
+                onClick={onClose}
+            >
               Отменить
-            </Button>
-            <Button color="black" onClick={handleSubmit}>
+            </BaseButton>
+            <BaseButton 
+                variantType='primary' 
+                onClick={handleSubmit}
+            >
               Подтвердить
-            </Button>
+            </BaseButton>
           </Group>
         </Stack>
       </Box>
-    </Modal>
+    </BaseModal>
   );
 };
 

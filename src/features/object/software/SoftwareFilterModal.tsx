@@ -1,6 +1,7 @@
-import { Modal, Button, Group, Stack } from '@mantine/core';
+import { Button, Group, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
+import { BaseModal } from '../../../UI/modal/BaseModal';
 
 interface SoftwareFilterModalProps {
   opened: boolean;
@@ -23,7 +24,7 @@ export const SoftwareFilterModal: React.FC<SoftwareFilterModalProps> = ({ opened
   };
 
   return (
-    <Modal 
+    <BaseModal
         opened={opened} 
         onClose={onClose}
         size="lg" 
@@ -54,6 +55,6 @@ export const SoftwareFilterModal: React.FC<SoftwareFilterModalProps> = ({ opened
             </Button>
         </Group>
       </Stack>
-    </Modal>
+    </BaseModal>
   );
 };
