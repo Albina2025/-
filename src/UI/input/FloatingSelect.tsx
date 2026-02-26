@@ -55,6 +55,7 @@ export const FloatingSelect: React.FC<FloatingSelectProps> = ({
   const isDark = colorScheme === 'dark';
   const bg = isDark ? '#161d21' : '#fdfdfd';
   const textColor = isDark ? '#ffffff' : '#000000';
+  const borderColor = isDark ? '#303d43' : '#d9d9d9';
   const hasValue = !!value;
 
   return (
@@ -68,24 +69,25 @@ export const FloatingSelect: React.FC<FloatingSelectProps> = ({
       onBlur={() => setFocused(false)}
       styles={{
         wrapper: {
-          backgroundColor: bg,
-          borderRadius: 8,
+            backgroundColor: bg,
+            borderRadius: 8,
         },
         input: {
-          backgroundColor: bg,
-          color: textColor,
+            backgroundColor: bg,
+            border: `1px solid ${borderColor}`,
+            color: textColor,
         },
         section: {
-          backgroundColor: bg,
+            backgroundColor: bg,
         },
         dropdown: {
-          backgroundColor: bg,
-          color: textColor,
+            backgroundColor: bg,
+            color: textColor,
         },
         label: {
-          color: textColor,
-          opacity: focused || hasValue ? 1 : 0,
-          transition: 'all 0.2s ease',
+            color: textColor,
+            opacity: focused || hasValue ? 1 : 0,
+            transition: 'all 0.2s ease',
         },
       }}
     />

@@ -1,7 +1,6 @@
 import {
     Stack,
     Group,
-    TextInput,
     Switch,
     Grid,
     Box,
@@ -16,6 +15,7 @@ import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { BaseModal } from '../../../UI/modal/BaseModal';
 import { BaseButton } from '../../../UI/button/BaseButton';
+
 
 interface AiAddModalProps {
     opened: boolean;
@@ -127,7 +127,11 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
             Добавление ИИ
           </Title>
 
-          <Divider />
+        <Divider 
+            style={{
+                border: '1px solid #303d43',
+            }}
+        />
 
          
           <Box
@@ -148,8 +152,12 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
                     labelText="Субъект"
                     value={form.subject}
                     onChange={(value) =>
-                    handleChange('licenseType', value || '')
+                    handleChange('subject', value || '')
                     }
+                     data={[
+                        { value: 'state', label: 'Мамлекеттик' },
+                        { value: 'private', label: 'Жеке' },
+                     ]}
                   />
                 </Grid.Col>
 
@@ -158,8 +166,12 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
                     labelText="Тип вычислительной платформы"
                     value={form.platformType}
                     onChange={(value) =>
-                    handleChange('licenseType', value || '')
+                    handleChange('platformType', value || '')
                     }
+                      data={[
+                        { value: 'server', label: 'Сервер' },
+                        { value: 'workstation', label: 'Рабочая станция' },
+                      ]}
                   />
                 </Grid.Col>
 
@@ -207,19 +219,19 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <TextInput
+                  <FloatingInput
                     type="date"
-                    label="Дата приобретения"
+                    labelText="Дата приобретения"
                     value={form.purchaseDate}
                     onChange={(e) =>
-                      handleChange('purchaseDate', e.currentTarget.value)
+                       handleChange('purchaseDate', e.currentTarget.value)
                     }
                   />
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <TextInput
-                    label="Сумма приобретения"
+                  <FloatingInput
+                    labelText="Сумма приобретения"
                     type="number"
                     value={form.purchaseAmount}
                     onChange={(e) =>
@@ -231,13 +243,19 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
                   />
                 </Grid.Col>
 
-                <Grid.Col span={6}>
+               <Grid.Col span={6}>
                   <FloatingSelect
                     labelText="Валюта суммы"
                     value={form.currency}
                     onChange={(value) =>
-                    handleChange('licenseType', value || '')
+                      handleChange('currency', value || '')
                     }
+                    data={[
+                      { value: 'сом', label: 'Сом' },
+                      { value: 'рубль', label: 'Рубль' },
+                      { value: 'доллар', label: 'Доллар' },
+                      { value: 'евро', label: 'Евро' },
+                    ]}
                   />
                 </Grid.Col>
 
@@ -301,21 +319,21 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
 
               <Grid gutter="md">
                 <Grid.Col span={6}>
-                  <TextInput
-                    label="Наименование модели ИИ"
+                  <FloatingSelect
+                    labelText="Наименование модели ИИ"
                     value={form.aiModelName}
-                    onChange={(e) =>
-                      handleChange(
-                        'aiModelName',
-                        e.currentTarget.value
-                      )
+                    onChange={(value) =>
+                        handleChange('licenseType', value || '')
                     }
+                    data={[
+                      { value: 'gpt-3.5', label: 'GPT-3.5' },
+                    ]}
                   />
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <TextInput
-                    label="Назначение модели ИИ"
+                  <FloatingInput
+                    labelText="Назначение модели ИИ"
                     value={form.aiModelPurpose}
                     onChange={(e) =>
                       handleChange(
@@ -327,8 +345,8 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
                 </Grid.Col>
 
                 <Grid.Col span={12}>
-                  <TextInput
-                    label="Разработчик / поставщик модели ИИ"
+                  <FloatingInput
+                    labelText="Разработчик / поставщик модели ИИ"
                     value={form.aiModelDeveloper}
                     onChange={(e) =>
                       handleChange(
@@ -341,8 +359,8 @@ export const AiAddModal: React.FC<AiAddModalProps> = ({
 
                 {useAPI && (
                   <Grid.Col span={12}>
-                    <TextInput
-                      label="Поставщик API (если используется)"
+                    <FloatingInput
+                      labelText="Поставщик API (если используется)"
                       value={form.apiProvider}
                       onChange={(e) =>
                         handleChange(

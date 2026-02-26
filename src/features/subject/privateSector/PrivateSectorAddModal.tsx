@@ -1,9 +1,7 @@
 import {
- 
   Stack,
   Group,
   Box,
-  Button,
   Grid,
   Title,
 } from '@mantine/core';
@@ -13,6 +11,7 @@ import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../store/dataSlice';
 import { BaseModal } from '../../../UI/modal/BaseModal';
+import { BaseButton } from '../../../UI/button/BaseButton';
 
 interface PrivateSectorAddModalProps {
   opened: boolean;
@@ -83,6 +82,7 @@ export const PrivateSectorAddModal: React.FC<
           <Title order={5} ta="center" mb="md">
             Добавить частный сектор
           </Title>
+          
 
           <Grid>
             <Grid.Col span={6}>
@@ -132,12 +132,18 @@ export const PrivateSectorAddModal: React.FC<
         </Box>
 
         <Group justify="center">
-          <Button variant="default" onClick={onClose}>
+          <BaseButton 
+                variantType="secondary" 
+                onClick={onClose}
+          >
             Отменить
-          </Button>
-          <Button color="black" onClick={handleSubmit}>
+          </BaseButton>
+          <BaseButton 
+                variantType='primary' 
+                onClick={handleSubmit}
+          >
             Подтвердить
-          </Button>
+          </BaseButton>
         </Group>
       </Stack>
     </BaseModal>

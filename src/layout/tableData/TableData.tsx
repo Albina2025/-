@@ -34,7 +34,7 @@ const isDark = colorScheme === "dark";
 
   const size = Number(pageSize);
   const totalPages = Math.ceil(data.length / size);
-  // const totalPages = Math.max(1, Math.ceil(data.length / size));
+
 
   const paginatedData = data.slice(
     (activePage - 1) * size,

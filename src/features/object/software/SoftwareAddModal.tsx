@@ -2,7 +2,6 @@ import {
     Stack,
     Group,
     Box,
-    Button,
     Grid,
 } from '@mantine/core';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { BaseModal } from '../../../UI/modal/BaseModal';
+import { BaseButton } from '../../../UI/button/BaseButton';
 
 interface SoftwareAddModalProps {
   opened: boolean;
@@ -108,9 +108,11 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             borderRadius: 8,
           }}
         >
+            
           <Group justify="center">
             <h2>Добавление ПО</h2>
           </Group>
+            
 
           <Grid>
             <Grid.Col span={6}>
@@ -120,6 +122,10 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
                 onChange={(value) =>
                    handleChange('subject', value || '')
                 }
+                data={[
+                  { value: 'state', label: 'Мамлекеттик' },
+                  { value: 'private', label: 'Жеке' },
+                ]}
               />
             </Grid.Col>
 
@@ -265,12 +271,17 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
         </Box>
 
         <Group justify="center">
-          <Button variant="default" onClick={onClose}>
+          <BaseButton 
+                variantType="secondary" 
+                onClick={onClose}>
             Отменить
-          </Button>
-          <Button color="black" onClick={handleSubmit}>
+          </BaseButton>
+          <BaseButton 
+                variantType='primary' 
+                onClick={handleSubmit}
+          >
             Подтвердить
-          </Button>
+          </BaseButton>
         </Group>
       </Stack>
     </BaseModal>

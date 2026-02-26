@@ -12,11 +12,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/use-app-dispatch";
-import { api } from "../../api/axios";
+// import { api } from "../../api/axios";
+import {api} from '../../api/axios'
 import { setTokens } from "../../store/authSlice";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import type { AxiosError } from "axios";
 import { useMantineColorScheme } from '@mantine/core';
+    // import type { AxiosError } from "axios";
 
 export const AuthLoginForm = () => {
     const [username, setUsername] = useState("");
@@ -51,6 +53,78 @@ export const AuthLoginForm = () => {
         setLoading(false);
         }
     };
+
+
+// interface LoginResponse {
+//   authenticationToken: string;
+//   refreshToken: string;
+//   roles: string[];
+//   menu: {
+//     parent: string;
+//     children: string[];
+//   }[];
+//   systemLanguage: string;
+// }
+
+// export const AuthLoginForm = () => {
+//   const [username, setUsername] = useState<string>("");
+//   const [password, setPassword] = useState<string>("");
+//   const [loading, setLoading] = useState<boolean>(false);
+//   const [error, setError] = useState<string | null>(null);
+
+//   const { colorScheme } = useMantineColorScheme();
+//   const isDark = colorScheme === "dark";
+
+//   const dispatch = useAppDispatch();
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setError(null);
+
+//     try {
+//       const response = await api.post<LoginResponse>(
+//         "/api/v1/auth/login",
+//         {
+//           username,
+//           password,
+//         }
+//       );
+
+//       const {
+//         authenticationToken,
+//         refreshToken,
+//         roles,
+//         menu,
+//         systemLanguage,
+//       } = response.data;
+
+//       dispatch(
+//         setTokens({
+//           accessToken: authenticationToken,
+//           refreshToken,
+//           roles,
+//           menu,
+//           language: systemLanguage,
+//         })
+//       );
+
+//       localStorage.setItem("accessToken", authenticationToken);
+//       localStorage.setItem("refreshToken", refreshToken);
+
+//       navigate("/");
+//     } catch (err) {
+//       const error = err as AxiosError<{ message: string }>;
+
+//       setError(
+//         error.response?.data?.message || "Ошибка авторизации"
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
 
   return (
     <div
@@ -93,7 +167,11 @@ export const AuthLoginForm = () => {
                 }
                 alt="logo"
                 style={{ width: 200 }}
+                
               />
+
+           
+     
               <Text
                 size="lg"
                 c={isDark ? "white" : "dark"}
@@ -205,3 +283,170 @@ export const AuthLoginForm = () => {
     </div>
   );
 };
+
+
+// import {
+//   Paper,
+//   Grid,
+//   Text,
+//   Title,
+//   TextInput,
+//   PasswordInput,
+//   Button,
+//   Container,
+//   Stack,
+// } from "@mantine/core";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useAppDispatch } from "../../hooks/use-app-dispatch";
+// import { api } from "../../api/axios";
+// import { setTokens } from "../../store/authSlice";
+// import { IconEye, IconEyeOff } from "@tabler/icons-react";
+// import { useMantineColorScheme } from "@mantine/core";
+// import type { AxiosError } from "axios";
+
+// interface LoginResponse {
+//   authenticationToken: string;
+//   refreshToken: string;
+//   roles: string[];
+//   menu: {
+//     parent: string;
+//     children: string[];
+//   }[];
+//   systemLanguage: string;
+// }
+
+// export const AuthLoginForm = () => {
+//   const [username, setUsername] = useState<string>("");
+//   const [password, setPassword] = useState<string>("");
+//   const [loading, setLoading] = useState<boolean>(false);
+//   const [error, setError] = useState<string | null>(null);
+
+//   const { colorScheme } = useMantineColorScheme();
+//   const isDark = colorScheme === "dark";
+
+//   const dispatch = useAppDispatch();
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setError(null);
+
+//     try {
+//       const response = await api.post<LoginResponse>(
+//         "/api/v1/auth/login",
+//         {
+//           username,
+//           password,
+//         }
+//       );
+
+//       const {
+//         authenticationToken,
+//         refreshToken,
+//         roles,
+//         menu,
+//         systemLanguage,
+//       } = response.data;
+
+//       dispatch(
+//         setTokens({
+//           accessToken: authenticationToken,
+//           refreshToken,
+//           roles,
+//           menu,
+//           language: systemLanguage,
+//         })
+//       );
+
+//       localStorage.setItem("accessToken", authenticationToken);
+//       localStorage.setItem("refreshToken", refreshToken);
+
+//       navigate("/");
+//     } catch (err) {
+//       const error = err as AxiosError<{ message: string }>;
+
+//       setError(
+//         error.response?.data?.message || "Ошибка авторизации"
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div
+//       style={{
+//         minHeight: "100vh",
+//         background: isDark ? "#0e1315" : "#f3f3f3",
+//         display: "flex",
+//         alignItems: "center",
+//       }}
+//     >
+//       <Container size="lg">
+//         <Paper
+//           radius="lg"
+//           p="xl"
+//           style={{
+//             background: isDark ? "#161d21" : "#fdfdfd",
+//             width: 1100,
+//           }}
+//         >
+//           <Grid align="center">
+//             <Grid.Col span={{ base: 12, md: 6 }}>
+//               <Stack align="center">
+//                 <Title order={2}>Авторизация</Title>
+
+//                 <form
+//                   onSubmit={handleLogin}
+//                   style={{
+//                     display: "flex",
+//                     flexDirection: "column",
+//                     gap: 20,
+//                     width: "100%",
+//                   }}
+//                 >
+//                   <TextInput
+//                     placeholder="Логин"
+//                     value={username}
+//                     onChange={(e) =>
+//                       setUsername(e.currentTarget.value)
+//                     }
+//                     required
+//                   />
+
+//                   <PasswordInput
+//                     placeholder="Пароль"
+//                     value={password}
+//                     onChange={(e) =>
+//                       setPassword(e.currentTarget.value)
+//                     }
+//                     required
+//                     visibilityToggleIcon={({ reveal }) =>
+//                       reveal ? (
+//                         <IconEye size={18} />
+//                       ) : (
+//                         <IconEyeOff size={18} />
+//                       )
+//                     }
+//                   />
+
+//                   {error && <Text c="red">{error}</Text>}
+
+//                   <Button
+//                     type="submit"
+//                     loading={loading}
+//                     fullWidth
+//                   >
+//                     Войти
+//                   </Button>
+//                 </form>
+//               </Stack>
+//             </Grid.Col>
+//           </Grid>
+//         </Paper>
+//       </Container>
+//     </div>
+//   );
+// };

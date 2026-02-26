@@ -10,9 +10,7 @@ import './i18n'
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <MantineProvider   defaultColorScheme="light"  theme={{
-          colorScheme: 'light',
-        }}>
+      <MantineProvider   defaultColorScheme="light">
         <App />
       </MantineProvider>
     </Provider>

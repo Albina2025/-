@@ -52,6 +52,7 @@ export const FloatingInput: React.FC<FloatingInputProps> = ({
   const isDark = colorScheme === 'dark';
   const bg = isDark ? '#161d21' : '#fdfdfd';
   const textColor = isDark ? '#ffffff' : '#000000';
+   const borderColor = isDark ? '#303d43' : '#d9d9d9';
 
   return (
     <TextInput
@@ -69,6 +70,7 @@ export const FloatingInput: React.FC<FloatingInputProps> = ({
         },
         input: {
           backgroundColor: bg,
+           border: `1px solid ${borderColor}`,
           color: textColor,
         },
         section: {
