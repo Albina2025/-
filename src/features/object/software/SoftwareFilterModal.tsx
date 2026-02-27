@@ -1,80 +1,10 @@
-// import {  Group, Stack } from '@mantine/core';
-// import { useState } from 'react';
-// import { FloatingSelect } from '../../../UI/input/FloatingSelect';
-// import { BaseModal } from '../../../UI/modal/BaseModal';
-// import { BaseButton } from '../../../UI/button/BaseButton';
-
-// interface SoftwareFilterModalProps {
-//   opened: boolean;
-//   onClose: () => void;
-// }
-
-// export const SoftwareFilterModal: React.FC<SoftwareFilterModalProps> = ({ opened, onClose }) => {
-//   const [subject, setSubject] = useState<string | null>(null);
-//   const [platform, setPlatform] = useState<string | null>(null);
-
-//   const handleReset = () => {
-//     setSubject(null);
-//     setPlatform(null);
-//   };
-
-//   const handleApply = () => {
-//     console.log('Selected Subject:', subject);
-//     console.log('Selected Platform:', platform);
-//     onClose(); 
-//   };
-
-//   return (
-//     <BaseModal
-//         opened={opened} 
-//         onClose={onClose}
-//         size="lg" 
-//         radius={15}
-//         centered
-//         withCloseButton={false}
-//     >
-//       <Stack >
-//         <FloatingSelect
-//           labelText="Субъект"
-//           placeholder="Субъект"
-//           value={subject}
-//           onChange={setSubject}
-//           data={[
-//             { value: 'private', label: 'Private Sector' },
-//             { value: 'public', label: 'Public Sector' },
-//           ]}
-//         />
-
-       
-
-//         <Group mt="md" grow>
-//             <BaseButton 
-//                 onClick={handleReset}
-//                 fullWidth
-//                 variantType="primary"
-//             >
-//                 Сбросить
-//             </BaseButton>
-//             <BaseButton 
-//                 onClick={handleApply}
-//                 fullWidth
-//                 variantType="primary"
-//             >
-//                 Применить фильтры
-//             </BaseButton>
-//         </Group>
-//       </Stack>
-//     </BaseModal>
-//   );
-// };
-
-
-import { Grid} from '@mantine/core'
+import { Grid, Divider} from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { FloatingSelect } from '../../../UI/input/FloatingSelect'
 import { BaseModal } from '../../../UI/modal/BaseModal'
 import { BaseButton } from '../../../UI/button/BaseButton'
 import type { SoftwareFilterType } from '../../../models/software'
+import { useTranslation } from "react-i18next";
 
 type Props = {
   opened: boolean
@@ -93,6 +23,7 @@ export const SoftwareFilterModal = ({
       subjectId: null,
     },
   })
+  const { t } = useTranslation();
 
   const handleReset = () => {
     form.reset()
@@ -114,13 +45,13 @@ export const SoftwareFilterModal = ({
       withCloseButton={false}
     >
       <Grid>
-        {/* <Grid.Col span={12}>
-          <Divider size="sm" my="xs" label="Фильтр программного обеспечения" />
-        </Grid.Col> */}
+        <Grid.Col span={12}>
+          <Divider size="sm" my="xs" label={t("softwareFilter.title")} />
+        </Grid.Col>
 
         <Grid.Col span={12}>
           <FloatingSelect
-            labelText="Субъект"
+            labelText={t("softwareFilter.fields.subject")}
             radius={10}
             data={[
               { value: '1', label: 'Минфин' },
@@ -136,7 +67,7 @@ export const SoftwareFilterModal = ({
             fullWidth
             variantType="primary"
           >
-            Сбросить
+             {t("softwareFilter.buttons.reset")}
           </BaseButton>
         </Grid.Col>
 
@@ -146,7 +77,7 @@ export const SoftwareFilterModal = ({
             fullWidth
             variantType="primary"
           >
-            Применить фильтры
+             {t("softwareFilter.buttons.apply")}
           </BaseButton>
         </Grid.Col>
       </Grid>

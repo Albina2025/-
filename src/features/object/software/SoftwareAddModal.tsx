@@ -12,6 +12,7 @@ import { FloatingInput } from '../../../UI/input/FloatingInput';
 import { FloatingSelect } from '../../../UI/input/FloatingSelect';
 import { BaseModal } from '../../../UI/modal/BaseModal';
 import { BaseButton } from '../../../UI/button/BaseButton';
+import { useTranslation } from "react-i18next";
 
 interface SoftwareAddModalProps {
   opened: boolean;
@@ -23,6 +24,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
   onClose,
 }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [form, setForm] = useState({
     subject: '',
@@ -110,28 +112,28 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
         >
             
           <Group justify="center">
-            <h2>Добавление ПО</h2>
+            <h2>{t("softwareModal.title")}</h2>
           </Group>
             
 
           <Grid>
             <Grid.Col span={6}>
               <FloatingSelect
-                labelText="Субъект"
+                labelText={t("softwareModal.fields.subject")}
                 value={form.subject}
                 onChange={(value) =>
                    handleChange('subject', value || '')
                 }
                 data={[
-                  { value: 'state', label: 'Мамлекеттик' },
-                  { value: 'private', label: 'Жеке' },
+                  { value: 'state', label: t("softwareModal.subjectOptions.state") },
+                  { value: 'private', label: t("softwareModal.subjectOptions.private") },
                 ]}
               />
             </Grid.Col>
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Название ПО"
+                labelText={t("softwareModal.fields.name")}
                 value={form.name}
                 onChange={(e) =>
                   handleChange('name', e.currentTarget.value)
@@ -141,7 +143,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Назначение ПО"
+                labelText={t("softwareModal.fields.purpose")}
                 value={form.purpose}
                 onChange={(e) =>
                   handleChange('purpose', e.currentTarget.value)
@@ -151,7 +153,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Производитель ПО"
+                labelText={t("softwareModal.fields.manufacturer")}
                 value={form.manufacturer}
                 onChange={(e) =>
                   handleChange('manufacturer', e.currentTarget.value)
@@ -161,7 +163,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Поставщик программного обеспечения"
+                labelText={t("softwareModal.fields.supplier")}
                 value={form.supplier}
                 onChange={(e) =>
                   handleChange('supplier', e.currentTarget.value)
@@ -172,7 +174,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             <Grid.Col span={6}>
               <FloatingInput
                 type="date"
-                labelText="Дата приобретения"
+                labelText={t("softwareModal.fields.purchaseDate")}
                 value={form.purchaseDate}
                 onChange={(e) =>
                   handleChange('purchaseDate', e.currentTarget.value)
@@ -183,7 +185,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             <Grid.Col span={6}>
               <FloatingInput
                 type="number"
-                labelText="Сумма приобретения"
+                labelText={t("softwareModal.fields.purchaseAmount")}
                 value={form.purchaseAmount}
                 onChange={(e) =>
                   handleChange('purchaseAmount', e.currentTarget.value)
@@ -193,15 +195,15 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
 
             <Grid.Col span={6}>
               <FloatingSelect
-                labelText="Валюта суммы"
+                labelText={t("softwareModal.fields.currency")}
                 value={form.currency}
                 onChange={(value) =>
                   handleChange('currency', value || '')
                 }
                 data={[
-                  { value: 'сом', label: 'Сом' },
-                  { value: 'евро', label: 'Евро' },
-                  { value: 'доллар', label: 'Доллар' },
+                  { value: 'сом', label: t("softwareModal.currencyOptions.som") },
+                  { value: 'евро', label:  t("softwareModal.currencyOptions.euro") },
+                  { value: 'доллар', label:  t("softwareModal.currencyOptions.dollar") },
                 ]}
               />
             </Grid.Col>
@@ -209,7 +211,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             <Grid.Col span={6}>
               <FloatingInput
                 type="date"
-                labelText="Дата последнего обновления ПО"
+                labelText={t("softwareModal.fields.lastUpdateDate")}
                 value={form.lastUpdateDate}
                 onChange={(e) =>
                   handleChange('lastUpdateDate', e.currentTarget.value)
@@ -221,7 +223,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             <Grid.Col span={6}>
               <FloatingInput
                 type="date"
-                labelText="Дата окончания срока действия лицензии"
+                labelText={t("softwareModal.fields.licenseEndDate")}
                 value={form.licenseEndDate}
                 onChange={(e) =>
                   handleChange('licenseEndDate', e.currentTarget.value)
@@ -232,7 +234,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Версия ПО"
+                labelText={t("softwareModal.fields.version")}
                 value={form.version}
                 onChange={(e) =>
                   handleChange('version', e.currentTarget.value)
@@ -243,15 +245,15 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             
            <Grid.Col span={6}>
               <FloatingSelect
-                labelText="Тип лицензии"
+                labelText={t("softwareModal.fields.licenseType")}
                 value={form.licenseType}
                 onChange={(value) =>
                   handleChange('licenseType', value || '')
                 }
                 data={[
-                  { value: 'commercial', label: 'Коммерческая' },
-                  { value: 'open', label: 'Open Source' },
-                  { value: 'trial', label: 'Триал' },
+                  { value: 'commercial', label: t("softwareModal.licenseOptions.commercial") },
+                  { value: 'open', label: t("softwareModal.licenseOptions.open") },
+                  { value: 'trial', label: t("softwareModal.licenseOptions.trial") },
                 ]}
               />
             </Grid.Col>
@@ -260,7 +262,7 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
             <Grid.Col span={12}>
               <FloatingInput
                 type="number"
-                labelText="Количество лицензий ПО"
+                labelText={t("softwareModal.fields.licenseCount")}
                 value={form.licenseCount}
                 onChange={(e) =>
                   handleChange('licenseCount', e.currentTarget.value)
@@ -274,13 +276,13 @@ export const SoftwareAddModal: React.FC<SoftwareAddModalProps> = ({
           <BaseButton 
                 variantType="secondary" 
                 onClick={onClose}>
-            Отменить
+            {t("softwareModal.buttons.cancel")}
           </BaseButton>
           <BaseButton 
                 variantType='primary' 
                 onClick={handleSubmit}
           >
-            Подтвердить
+             {t("softwareModal.buttons.confirm")}
           </BaseButton>
         </Group>
       </Stack>

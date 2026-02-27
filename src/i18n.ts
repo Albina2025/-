@@ -14,11 +14,12 @@ i18n
       kg: { translation: kg },   
     },
 
-    lng: 'ru',              
+                
     fallbackLng: 'ru',     
 
     detection: {
       order: ['localStorage'], 
+      caches: ['localStorage'],
     },
 
     interpolation: {

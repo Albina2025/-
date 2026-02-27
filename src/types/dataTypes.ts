@@ -3,7 +3,7 @@ export interface AIType {
   name: string;
   value: number;
   action: string;
-  apiUsage: string;
+  apiUsage: boolean;
   subject: string;
   platformType: string;
   equipmentName: string;
@@ -18,6 +18,11 @@ export interface AIType {
   aiModelPurpose: string;
   aiModelDeveloper: string;
   apiProvider: string;
+}
+
+export interface AiFilterType {
+  subjectId: string | null;
+  platformType: string | null;
 }
 
 // Software
@@ -38,13 +43,24 @@ export interface SoftwareType {
     licenseCount: number;
 }
 
+export interface SoftwareFilterType {
+  subjectId: string | null;
+}
+
 // PrivateSector
 export interface PrivateSectorType {
-    action: string;
-    subject: string;
-    name: string;
-    purpose: string;
-    status: string; 
+  subject: string
+  name: string
+  purpose: string
+  status: string
+  action?: string
+}
+
+export interface PrivateSectorFilterType {
+  name: string | null
+  address: string | null
+  useAPI: boolean
+  audited: boolean
 }
 
 export type DataType = 'ai' | 'software' | 'privateSector';

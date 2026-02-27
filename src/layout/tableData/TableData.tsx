@@ -11,6 +11,7 @@ import {
 } from '@mantine/core';
 import { useState } from 'react';
 import { useMantineColorScheme } from '@mantine/core';
+import { useTranslation } from "react-i18next";
 
 interface TableDataProps<T> {
   columns: { key: keyof T; label: string }[];
@@ -30,7 +31,8 @@ export function TableData<T>({
   const [activePage, setActivePage] = useState(1);
   const [pageSize, setPageSize] = useState('10');
   const { colorScheme } = useMantineColorScheme();
-const isDark = colorScheme === "dark";
+  const isDark = colorScheme === "dark";
+  const { t } = useTranslation();
 
   const size = Number(pageSize);
   const totalPages = Math.ceil(data.length / size);
@@ -60,7 +62,7 @@ const isDark = colorScheme === "dark";
               },
             }}
           >
-            Фильтры
+             {t("tableData.filters")}
           </Button>
         )}
 
@@ -80,7 +82,7 @@ const isDark = colorScheme === "dark";
               },
             }}
           >
-            Добавить
+             {t("tableData.add")}
           </Button>
         )}
       </Group>
@@ -172,11 +174,11 @@ const isDark = colorScheme === "dark";
               fontWeight: 500,
             }}
           >
-            Всего данных: {data.length}
+              {t("tableData.totalData")}:  {data.length}
           </Text>
 
           {data.length === 0 ? (
-            <div style={{ padding: 20}}>Нет данных</div>
+            <div style={{ padding: 20}}>  {t("tableData.noData")}</div>
           ) : (
             <Pagination
               total={totalPages}

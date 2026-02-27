@@ -3,17 +3,20 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { IconChevronDown, IconChevronRight } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 
 interface MenuItem {
   label: string;
   path?: string;
   children?: MenuItem[];
+  translationKey?: string;
 }
 
 export const Sidebar: React.FC = () => {
   const location = useLocation();
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === "dark";
+   const { t } = useTranslation();
  
   const [openStates, setOpenStates] = useState<{ [key: string]: boolean }>({
     objects: true,
@@ -24,19 +27,24 @@ export const Sidebar: React.FC = () => {
     setOpenStates((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const menu: MenuItem[] = [
-    
+
+   const menu = [
     {
-      label: 'Субъекты',
+      key: "subjects",
+      label: t("sidebar.subject"),
       children: [
-        { label: 'Частный сектор', path: '/subjects/private-sector' },
+        {
+          label: t("sidebar.private-sector"),
+          path: "/subjects/private-sector",
+        },
       ],
     },
     {
-      label: 'Объекты',
+      key: "objects",
+      label: t("sidebar.object"),
       children: [
-        { label: 'ИИ', path: '/objects/ai' },
-        { label: 'ПО', path: '/objects/software' },
+        { label: t("sidebar.ai"), path: "/objects/ai" },
+        { label: t("sidebar.software"), path: "/objects/software" },
       ],
     },
   ];

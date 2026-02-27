@@ -5,8 +5,21 @@ import { MainLayout } from "../layout/MainLayout";
 import {AIPage} from "../pages/objects/AIPage";
 import {SoftwarePage} from "../pages/objects/SoftwarePage";
 import {PrivateSectorPage} from "../pages/subjects/PrivateSectorPage";
+import { setTokens } from "../store/authSlice"; 
+import { store } from "../store";
 
 
+const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
+
+if (accessToken && refreshToken) {
+  store.dispatch(
+    setTokens({
+      accessToken,
+      refreshToken,
+    })
+  );
+}
 
 export default function AppRouter() {
   return (

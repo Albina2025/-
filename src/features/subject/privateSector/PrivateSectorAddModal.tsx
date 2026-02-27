@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../../../store/dataSlice';
 import { BaseModal } from '../../../UI/modal/BaseModal';
 import { BaseButton } from '../../../UI/button/BaseButton';
+import { useTranslation } from 'react-i18next';
 
 interface PrivateSectorAddModalProps {
   opened: boolean;
@@ -20,8 +21,9 @@ interface PrivateSectorAddModalProps {
 
 export const PrivateSectorAddModal: React.FC<
   PrivateSectorAddModalProps
-> = ({ opened, onClose }) => {
+  > = ({ opened, onClose }) => {
   const dispatch = useDispatch();
+   const { t } = useTranslation();
 
   const [form, setForm] = useState({
     subject: '',
@@ -80,14 +82,14 @@ export const PrivateSectorAddModal: React.FC<
           }}
         >
           <Title order={5} ta="center" mb="md">
-            Добавить частный сектор
+            {t("privateSectorModal.title")}
           </Title>
           
 
           <Grid>
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Наименование"
+                labelText={t("privateSectorModal.fields.name")}
                 value={form.subject}
                 onChange={(e) =>
                   handleChange('subject', e.currentTarget.value)
@@ -97,7 +99,7 @@ export const PrivateSectorAddModal: React.FC<
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Вышестоящий"
+                labelText={t("privateSectorModal.fields.parent")}
                 value={form.name}
                 onChange={(e) =>
                   handleChange('name', e.currentTarget.value)
@@ -107,7 +109,7 @@ export const PrivateSectorAddModal: React.FC<
 
             <Grid.Col span={6}>
               <FloatingInput
-                labelText="Адрес"
+                labelText={t("privateSectorModal.fields.address")}
                 value={form.purpose}
                 onChange={(e) =>
                   handleChange('purpose', e.currentTarget.value)
@@ -117,14 +119,20 @@ export const PrivateSectorAddModal: React.FC<
 
             <Grid.Col span={6}>
               <FloatingSelect
-                labelText="Статус"
+                labelText={t("privateSectorModal.fields.status")}
                 value={form.status}
                 onChange={(value) =>
                   handleChange('status', value || '')
                 }
                 data={[
-                  { value: 'active', label: 'Активный' },
-                  { value: 'inactive', label: 'Неактивный' },
+                  { 
+                    value: 'active', 
+                    label: t("privateSectorModal.statusOptions.active"), 
+                  },
+                  { 
+                    value: 'inactive', 
+                    label:  t("privateSectorModal.statusOptions.inactive"),
+                  },
                 ]}
               />
             </Grid.Col>
@@ -136,13 +144,13 @@ export const PrivateSectorAddModal: React.FC<
                 variantType="secondary" 
                 onClick={onClose}
           >
-            Отменить
+             {t("privateSectorModal.buttons.cancel")}
           </BaseButton>
           <BaseButton 
                 variantType='primary' 
                 onClick={handleSubmit}
           >
-            Подтвердить
+            {t("privateSectorModal.buttons.confirm")}
           </BaseButton>
         </Group>
       </Stack>

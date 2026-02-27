@@ -1,10 +1,184 @@
 {
     "language": "язык",
-    "Create AI": "Создать ИИ",
-    "Edit AI": "Редактировать ИИ",
-    "Name": "Имя",
-    "Description": "Описание",
-    "Sector": "Сектор",
-    "Search AI...": "Поиск ИИ...",
-    "Toggle Theme": "Сменить тему"
+    "authorization": {
+        "signIn": "Вход",
+        "login": "Логин",
+        "password": "Пароль"
+    },
+
+    "header": {
+        "getOut": "Выход"
+    },
+
+    "sidebar": {
+        "subject": "Субъекты",
+        "private-sector": "Частный сектор",
+        "object": "Объекты",
+        "ai": "ИИ",
+        "software": "ПО"
+    },
+
+    "tableData": {
+        "filters": "Фильтры",
+        "add": "Добавить",
+        "totalData": "Всего данных",
+        "noData": "Нет данных"
+    },
+    "object": {
+        "ai": {
+            "action": "Действия",
+            "apiUsage": "Используется API",
+            "subject": "Субъект",
+            "platformType": "Тип вычислительной платформы",
+            "equipmentName": "Наименование оборудования",
+            "equipmentPurpose": "Назначение оборудования",
+            "ownerDepartment": "Ответственное подразделение-владелец",
+            "equipmentSupplier": "Поставщик оборудования",
+            "purchaseDate": "Дата приобретения",
+            "purchaseAmount": "Сумма приобретения",
+            "currency": "Валюта суммы",
+            "shortCharacteristics": "Краткие характеристики",
+            "aiModelName": "Наименование модели ИИ",
+            "aiModelPurpose": "Назначение модели ИИ",
+            "aiModelDeveloper": "Разработчик / поставщик модели ИИ",
+            "apiProvider": "Поставщик API (если используется)"
+        },
+        "software": {
+            "action": "Действия",
+            "subject": "Субъект",
+            "name": "Название ПО",
+            "purpose": "Назначение ПО",
+            "manufacturer": "Производитель ПО",
+            "supplier": "Поставщик программного обеспечения",
+            "purchaseDate": "Дата приобретения",
+            "purchaseAmount": "Сумма приобретения",
+            "currency": "Валюта суммы",
+            "lastUpdateDate": "Дата последнего обновления ПО",
+            "licenseEndDate": "Дата окончания срока действия лицензии",
+            "version": "Версия",
+            "licenseType": "Тип лицензии ПО",
+            "licenseCount": "Количество лицензий ПО"
+        }
+    },
+    "privateSectorModal": {
+        "title": "Добавить частный сектор",
+        "fields": {
+        "name": "Наименование",
+        "parent": "Вышестоящий",
+        "address": "Адрес",
+        "status": "Статус"
+        },
+        "statusOptions": {
+        "active": "Активный",
+        "inactive": "Неактивный"
+        },
+        "buttons": {
+        "cancel": "Отменить",
+        "confirm": "Подтвердить"
+        }
+    },
+    "privateSectorFilter": {
+        "title": "Фильтр Private Sector",
+        "fields": {
+        "name": "Наименование",
+        "address": "Адрес",
+        "useAPI": "Используется API",
+        "audited": "Проверено"
+        },
+        "buttons": {
+        "reset": "Сбросить",
+        "apply": "Применить"
+        }
+    },
+    "softwareModal": {
+        "title": "Добавление ПО",
+        "fields": {
+            "subject": "Субъект",
+            "name": "Название ПО",
+            "purpose": "Назначение ПО",
+            "manufacturer": "Производитель ПО",
+            "supplier": "Поставщик программного обеспечения",
+            "purchaseDate": "Дата приобретения",
+            "purchaseAmount": "Сумма приобретения",
+            "currency": "Валюта суммы",
+            "lastUpdateDate": "Дата последнего обновления ПО",
+            "licenseEndDate": "Дата окончания срока действия лицензии",
+            "version": "Версия ПО",
+            "licenseType": "Тип лицензии",
+            "licenseCount": "Количество лицензий ПО"
+        },
+        "licenseOptions": {
+            "commercial": "Коммерческая",
+            "open": "Open Source",
+            "trial": "Триал"
+        },
+        "subjectOptions": {
+            "state": "Государственный",
+            "private": "Частный"
+        },
+        "currencyOptions": {
+            "som": "Сом",
+            "euro": "Евро",
+            "dollar": "Доллар"
+        },
+        "buttons": {
+            "cancel": "Отменить",
+            "confirm": "Подтвердить"
+        }
+    },
+
+    "softwareFilter": {
+        "title": "Фильтр программного обеспечения",
+        "fields": {
+            "subject": "Субъект"
+        },
+        "buttons": {
+            "reset": "Сбросить",
+            "apply": "Применить фильтры"
+        }
+    },
+    "aiModal": {
+        "hardware": "Аппаратная платформа (железо)",
+        "model": "Модель искусственного интеллекта",
+        "title": "Добавление ИИ",
+
+        "fields": {
+        "subject": "Субъект",
+        "platformType": "Тип вычислительной платформы",
+        "equipmentName": "Наименование оборудования",
+        "equipmentPurpose": "Назначение оборудования",
+        "ownerDepartment": "Ответственное подразделение-владелец",
+        "equipmentSupplier": "Поставщик оборудования",
+        "purchaseDate": "Дата приобретения",
+        "purchaseAmount": "Сумма приобретения",
+        "currency": "Валюта суммы",
+        "shortCharacteristics": "Краткие характеристики",
+        "aiModelName": "Наименование модели ИИ",
+        "aiModelPurpose": "Назначение модели ИИ",
+        "aiModelDeveloper": "Разработчик / поставщик модели ИИ",
+        "apiProvider": "Поставщик API (если используется)",
+        "useAPI": "Используется API"
+        },
+         "currencyOptions": {
+            "som": "Сом",
+            "euro": "Евро",
+            "dollar": "Доллар"
+        },
+
+        "buttons": {
+        "cancel": "Отменить",
+        "confirm": "Подтвердить"
+        }
+    },
+
+    "aiFilter": {
+        "fields": {
+            "subject": "Выберите субъект",
+            "platformType": "Тип вычислительной платформы"
+        },
+        "buttons": {
+            "reset": "Сбросить",
+            "apply": "Применить фильтры"
+        }
+    }
 }

@@ -1,11 +1,178 @@
 {
     "language": "Тил",
-    "Create AI": "AI түзүү",
-    "Edit AI": "AI өзгөртүү",
-    "Name": "Аты",
-    "Description": "Сипаттама",
-    "Sector": "Сектор",
-    "Search AI...": "AI издөө...",
-    "Toggle Theme": "Тема алмаштыруу"
+    "authorization": {
+        "signIn": "Кирүү",
+        "login": "Логин",
+        "password": "Сырсоз"
+    },
+    
+    "header": {
+        "getOut":"Чыгуу"
+    },
+    "sidebar": {
+        "subject": "Ведомстволор",
+        "private-sector":"Жеке сектор",
+        "object": "Системалар",
+        "ai":"ЖИ",
+        "software":"ПК"
+    },
+    "tableData": {
+        "filters":"Фильтрлер",
+        "add": "Кошуу",
+        "totalData": "Бардык маалыматтар",
+        "noData": "Маалымат жок"
+    },
+    "object": {
+        "ai": {
+            "action": "Аракеттер",
+            "apiUsage": "API колдонулушу",
+            "subject": "Субъект",
+            "platformType": "Эсептөө платформасынын түрү",
+            "equipmentName": "Жабдуунун аталышы",
+            "equipmentPurpose": "Жабдуунун максаты",
+            "ownerDepartment": "Жооптуу бөлүм (ээси)",
+            "equipmentSupplier": "Жабдуу жеткирүүчү",
+            "purchaseDate": "Сатып алынган дата",
+            "purchaseAmount": "Сатып алуу суммасы",
+            "currency": "Валюта",
+            "shortCharacteristics": "Кыскача мүнөздөмөлөр",
+            "aiModelName": "ЖИ моделинин аталышы",
+            "aiModelPurpose": "ЖИ моделинин максаты",
+            "aiModelDeveloper": "ЖИ моделин иштеп чыгуучу / жеткирүүчү",
+            "apiProvider": "API жеткирүүчү (эгер колдонулса)"
+        },
+        "software": {
+            "action": "Аракеттер",
+            "subject": "Субъект",
+            "name": "Программалык камсыздоонун аталышы",
+            "purpose": "Программалык камсыздоонун максаты",
+            "manufacturer": "Программалык камсыздоону өндүрүүчү",
+            "supplier": "Программалык камсыздоону жеткирүүчү",
+            "purchaseDate": "Сатып алынган дата",
+            "purchaseAmount": "Сатып алуу суммасы",
+            "currency": "Валюта",
+            "lastUpdateDate": "Акыркы жаңыртуу датасы",
+            "licenseEndDate": "Лицензиянын мөөнөтү аяктаган дата",
+            "version": "Версия",
+            "licenseType": "Лицензиянын түрү",
+            "licenseCount": "Лицензиялардын саны"
+        }
+    },
+    "privateSectorModal": {
+        "title": "Жеке секторду кошуу",
+        "fields": {
+        "name": "Аталышы",
+        "parent": "Жогору турган",
+        "address": "Дареги",
+        "status": "Статусу"
+        },
+        "statusOptions": {
+        "active": "Активдүү",
+        "inactive": "Активдүү эмес"
+        },
+        "buttons": {
+        "cancel": "Жокко чыгаруу",
+        "confirm": "Ырастоо"
+        }
+    },
+    "privateSectorFilter": {
+        "title": "Жеке сектор фильтри",
+        "fields": {
+        "name": "Аталышы",
+        "address": "Дареги",
+        "useAPI": "API колдонулат",
+        "audited": "Текшерилген"
+        },
+        "buttons": {
+        "reset": "Тазалоо",
+        "apply": "Колдонуу"
+        }
+    },
+    "softwareModal": {
+        "title": "Программалык камсыздоону кошуу",
+        "fields": {
+        "subject": "Субъект",
+        "name": "Программалык камсыздоонун аталышы",
+        "purpose": "Максаты",
+        "manufacturer": "Өндүрүүчү",
+        "supplier": "Жеткирүүчү",
+        "purchaseDate": "Сатып алынган дата",
+        "purchaseAmount": "Сатып алуу суммасы",
+        "currency": "Валюта",
+        "lastUpdateDate": "Акыркы жаңыртуу датасы",
+        "licenseEndDate": "Лицензиянын мөөнөтү аяктаган дата",
+        "version": "Версия",
+        "licenseType": "Лицензиянын түрү",
+        "licenseCount": "Лицензиялардын саны"
+        },
+        "licenseOptions": {
+        "commercial": "Коммерциялык",
+        "open": "Ачык булак",
+        "trial": "Сыноо"
+        },
+        "subjectOptions": {
+        "state": "Мамлекеттик",
+        "private": "Жеке"
+        },
+        "currencyOptions": {
+        "som": "Сом",
+        "euro": "Евро",
+        "dollar": "Доллар"
+        },
+        "buttons": {
+        "cancel": "Жокко чыгаруу",
+        "confirm": "Ырастоо"
+        }
+    },
+
+    "softwareFilter": {
+        "title": "Программалык камсыздоону фильтрлөө",
+        "fields": {
+        "subject": "Субъект"
+        },
+        "buttons": {
+        "reset": "Тазалоо",
+        "apply": " Колдонуу"
+        }
+    },
+     "aiModal": {
+        "hardware": "Аппараттык платформа (темир жабдык)",
+        "model": "Жасалма интеллект модели",
+        "title": "ЖИ кошуу",
+
+        "fields": {
+        "subject": "Субъект",
+        "platformType": "Эсептөө платформасынын түрү",
+        "equipmentName": "Жабдуунун аталышы",
+        "equipmentPurpose": "Жабдуунун максаты",
+        "ownerDepartment": "Жооптуу бөлүм (ээси)",
+        "equipmentSupplier": "Жабдуу жеткирүүчү",
+        "purchaseDate": "Сатып алынган дата",
+        "purchaseAmount": "Сатып алуу суммасы",
+        "currency": "Валюта",
+        "shortCharacteristics": "Кыскача мүнөздөмөлөр",
+        "aiModelName": "ЖИ моделинин аталышы",
+        "aiModelPurpose": "ЖИ моделинин максаты",
+        "aiModelDeveloper": "ЖИ моделин иштеп чыгуучу / жеткирүүчү",
+        "apiProvider": "API жеткирүүчү (эгер колдонулса)",
+        "useAPI": "API колдонулат"
+        },
+
+        "buttons": {
+        "cancel": "Жокко чыгаруу",
+        "confirm": "Ырастоо"
+        }
+    },
+
+    "aiFilter": {
+        "fields": {
+            "subject": "Субъектти тандаңыз",
+            "platformType": "Эсептөө платформасынын түрү"
+        },
+        "buttons": {
+            "reset": "Тазалоо",
+            "apply": "Колдонуу"
+        }
+    }
     
 }
