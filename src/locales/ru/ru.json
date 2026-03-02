@@ -1,6 +1,7 @@
 {
     "language": "язык",
     "authorization": {
+        "authorization": "авторизация",
         "signIn": "Вход",
         "login": "Логин",
         "password": "Пароль"

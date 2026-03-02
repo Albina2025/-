@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../../hooks/use-app-dispatch";
 import {api} from '../../api/axios'
 import { setTokens } from "../../store/authSlice";
@@ -25,9 +26,12 @@ export const AuthLoginForm = () => {
     const [error, setError] = useState<string | null>(null);
     const { colorScheme } = useMantineColorScheme();
     const isDark = colorScheme === 'dark';
+    const {t} = useTranslation()
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,16 +39,15 @@ export const AuthLoginForm = () => {
     setError(null);
     try {
         const response = await api.post("/api/v1/auth/login", { username, password });
-
+        console.log(response.data);
       
         const accessToken = response.data.authenticationToken;
         const refreshToken = response.data.refreshToken;
 
-        dispatch(setTokens({ accessToken, refreshToken }));
-
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
 
+        dispatch(setTokens({ accessToken, refreshToken }));
         navigate("/subjects/private-sector");
     } catch (err: unknown) {
         const error = err as AxiosError<{ message: string }>;
@@ -91,8 +94,8 @@ export const AuthLoginForm = () => {
               <img
                  src={
                     isDark
-                    ? "http://10.111.70.97:3004/public/logo_light.svg"
-                    : "http://10.111.70.97:3004/public/logo_dark.svg"
+                    ? "http://10.111.70.97:3003/public/logo_light.svg"
+                    : "http://10.111.70.97:3003/public/logo_dark.svg"
                 }
                 alt="logo"
                 style={{ width: 200 }}
@@ -145,12 +148,14 @@ export const AuthLoginForm = () => {
 
                   <form
                     onSubmit={handleLogin}
+                    autoComplete="off"
                     style={{ display: "flex", flexDirection: "column", gap: 30 }}
                   >
                     <TextInput
                       label={username ? "Логин" : undefined}
-                      placeholder="Логин"
+                      placeholder={t("authorization.login")}
                       value={username}
+                      autoComplete="off"
                       onChange={(e) => setUsername(e.currentTarget.value)}
                       required
                       styles={{
@@ -169,7 +174,8 @@ export const AuthLoginForm = () => {
                       value={password}
                       onChange={(e) => setPassword(e.currentTarget.value)}
                       label={password ? "Пароль" : undefined}
-                      placeholder="Пароль"
+                      placeholder={t("authorization.password")}
+                      autoComplete="new-password"
                       required
                       styles={{
                         input: {

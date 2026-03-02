@@ -81,3 +81,120 @@ export const AIPage: React.FC = () => {
     </>
   );
 };
+
+// import { useState, useEffect, useCallback } from "react";
+// import { TableData } from "../../layout/tableData/TableData";
+// import { AiAddModal } from "../../features/object/ai/AiAddModal";
+// import { AiFilterModal } from "../../features/object/ai/AiFilterModal";
+// import { selectAi } from "../../services/ai.service";
+// import type { AiSelectRequest, AiItem } from "../../types/ai.types";
+// import type { AiFilterType } from "../../types/dataTypes";
+
+// export const AIPage: React.FC = () => {
+//   const [openedAdd, setOpenedAdd] = useState(false);
+//   const [openedFilter, setOpenedFilter] = useState(false);
+
+//   const [data, setData] = useState<AiItem[]>([]);
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState<string | null>(null);
+
+//   // 🔹 pagination state
+//   const [page, setPage] = useState(0);
+//   const [limit, setLimit] = useState(10);
+
+//   // 🔹 sorting state
+//   const [sortBy, setSortBy] = useState("ID");
+//   const [sortDirection, setSortDirection] =
+//     useState<"ASC" | "DESC">("ASC");
+
+//   // 🔹 filter state
+//   const [filter, setFilter] = useState<AiFilterType>({
+//     subjectId: null,
+//     platformType: null,
+//   });
+
+//   // ✅ FETCH FUNCTION
+//   const fetchData = useCallback(async () => {
+//     setLoading(true);
+//     setError(null);
+
+//     const request: AiSelectRequest = {
+//       pageRequest: {
+//         page,
+//         limit,
+//       },
+//       sorting: {
+//         sortBy,
+//         sortDirection,
+//       },
+//       filter: {
+//         ministryId: filter.subjectId
+//           ? Number(filter.subjectId)
+//           : null,
+//         computePlatformTypeId: filter.platformType
+//           ? Number(filter.platformType)
+//           : null,
+//       },
+//     };
+
+//     try {
+//       const res = await selectAi(request);
+//       setData(res.data.content);
+//     } catch (err) {
+//       setError("Failed to load data");
+//       console.error("Fetch AI error:", err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   }, [page, limit, sortBy, sortDirection, filter]);
+
+//   // 🔄 auto reload
+//   useEffect(() => {
+//     fetchData();
+//   }, [fetchData]);
+
+//   const columns: { key: keyof AiItem | "action"; label: string }[] = [
+//     { key: "action", label: "Action" },
+//     { key: "id", label: "ID" },
+//     { key: "titleKg", label: "Title KG" },
+//     { key: "titleRu", label: "Title RU" },
+//   ];
+
+//   return (
+//     <>
+//       <TableData
+//         columns={columns}
+//         data={data}
+//         loading={loading}
+//         error={error}
+//         page={page}
+//         limit={limit}
+//         total={data.length}
+//         onPageChange={setPage}
+//         onLimitChange={(value) => {
+//           setLimit(value);
+//           setPage(0);
+//         }}
+//         onAdd={() => setOpenedAdd(true)}
+//         onFilter={() => setOpenedFilter(true)}
+//       />
+
+//       <AiAddModal
+//         opened={openedAdd}
+//         onClose={() => {
+//           setOpenedAdd(false);
+//           fetchData();
+//         }}
+//       />
+
+//       <AiFilterModal
+//         opened={openedFilter}
+//         onClose={() => setOpenedFilter(false)}
+//         onApply={(values) => {
+//           setFilter(values);
+//           setPage(0);
+//         }}
+//       />
+//     </>
+//   );
+// };

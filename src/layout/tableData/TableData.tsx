@@ -121,7 +121,7 @@ export function TableData<T>({
             width: '100%',
           }}
         >
-          <thead>
+         <thead>
             <tr>
               {columns.map((col) => (
                 <th
@@ -137,7 +137,7 @@ export function TableData<T>({
                 </th>
               ))}
             </tr>
-          </thead>
+          </thead> 
 
           <tbody>
             {paginatedData.map((row, i) => (
@@ -194,7 +194,7 @@ export function TableData<T>({
                   borderColor: isDark ? '#2c2f33' : '#dee2e6',
                   
 
-                  '&[data-active]': {
+                  '&[dataActive]': {
                     backgroundColor: isDark ? '#2f9e44' : '#228be6',
                     color: '#ffffff',
                   },

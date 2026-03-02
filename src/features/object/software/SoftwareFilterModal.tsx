@@ -3,7 +3,7 @@ import { useForm } from '@mantine/form'
 import { FloatingSelect } from '../../../UI/input/FloatingSelect'
 import { BaseModal } from '../../../UI/modal/BaseModal'
 import { BaseButton } from '../../../UI/button/BaseButton'
-import type { SoftwareFilterType } from '../../../models/software'
+import type { SoftwareFilterType } from '../../../types/dataTypes'
 import { useTranslation } from "react-i18next";
 
 type Props = {

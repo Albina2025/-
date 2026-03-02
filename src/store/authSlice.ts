@@ -39,6 +39,10 @@ const authSlice = createSlice({
     ) {
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
+
+      localStorage.setItem("accessToken", action.payload.accessToken);
+      localStorage.setItem("refreshToken", action.payload.refreshToken);
+
       if (action.payload.roles) state.roles = action.payload.roles;
       if (action.payload.menu) state.menu = action.payload.menu;
       if (action.payload.language) state.language = action.payload.language;
@@ -49,6 +53,10 @@ const authSlice = createSlice({
       state.refreshToken = null;
       state.roles = [];
       state.menu = [];
+
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+
     },
   },
 });

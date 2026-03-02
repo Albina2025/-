@@ -1,16 +1,20 @@
 import axios, { AxiosError } from "axios";
-import type {
-  InternalAxiosRequestConfig,
-  AxiosRequestConfig,
-} from "axios";
-
+import type {InternalAxiosRequestConfig, AxiosRequestConfig} from "axios";
 import { store } from "../store";
 import { setTokens, logout } from "../store/authSlice";
 import i18n from "../i18n";
 
 interface RefreshResponse {
+  id: number;
   authenticationToken: string;
   refreshToken: string;
+  inn: string;
+  roles: string[];
+  menu: {
+    parent: string;
+    children: string[];
+  }[];
+  systemLanguage: string;
 }
 
 interface CustomAxiosRequestConfig extends AxiosRequestConfig {
@@ -22,10 +26,11 @@ export const api = axios.create({
 });
 
 
-
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token = store.getState().auth.accessToken;
+    const token = localStorage.getItem("accessToken");
+
+    console.log("ACCESS:", token);
 
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -51,6 +56,7 @@ api.interceptors.response.use(
 
       const refreshToken =
         store.getState().auth.refreshToken;
+        console.log("REFRESH:", store.getState().auth.refreshToken);
 
       if (!refreshToken) {
         store.dispatch(logout());
@@ -58,10 +64,16 @@ api.interceptors.response.use(
       }
 
       try {
-        const res = await axios.post<RefreshResponse>(
-          `${import.meta.env.VITE_APP_API_TEST}/api/v1/auth/refresh`,
-          { refreshToken }
+        // const res = await axios.post<RefreshResponse>(
+        //   `${import.meta.env.VITE_APP_API_TEST}/api/v1/auth/refresh-token`,
+        //   { refreshToken }
+        // );
+        const res = await api.post<RefreshResponse>("/api/v1/auth/refresh-token", 
+          {refreshToken}
         );
+        
+        localStorage.setItem("accessToken", res.data.authenticationToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
 
         store.dispatch(
           setTokens({
