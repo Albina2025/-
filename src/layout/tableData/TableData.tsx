@@ -42,6 +42,7 @@ export function TableData<T>({
     (activePage - 1) * size,
     activePage * size
   );
+  
 
   return (
     <>
@@ -236,3 +237,165 @@ export function TableData<T>({
     </>
   );
 }
+
+// import {
+//   Table,
+//   Button,
+//   Group,
+//   Pagination,
+//   Select,
+//   Flex,
+//   Box,
+//   ScrollArea,
+//   Text,
+// } from "@mantine/core";
+// import { useState } from "react";
+// import { useMantineColorScheme } from "@mantine/core";
+// import { useTranslation } from "react-i18next";
+// import { useQuery } from "@tanstack/react-query";
+// import { api } from "../../api/axios";
+// import type {AiSearchResponse, AiItem} from "../../types/ai/ai.response.types"
+
+
+// interface Column<T> {
+//   key: keyof T;
+//   label: string;
+// }
+
+// interface TableDataProps<T> {
+//   columns: Column<T>[];
+//   onAdd?: () => void;
+//   onFilter?: () => void;
+// }
+
+// export function TableData<T extends { id: number }>({
+//   columns,
+//   onAdd,
+//   onFilter,
+// }: TableDataProps<T>) {
+//   const [activePage, setActivePage] = useState(1);
+//   const [pageSize, setPageSize] = useState("10");
+
+//   const { colorScheme } = useMantineColorScheme();
+//   const isDark = colorScheme === "dark";
+//   const { t } = useTranslation();
+
+//   // ✅ React Query менен data алуу
+//   const { data } = useQuery<AiSearchResponse<AiItem>>({
+//   queryKey: ["ai", page],
+//   queryFn: async () => {
+//     const response = await api.post("/api/v1/ai/search", {
+//       pageRequest: {
+//         page: page - 1,
+//         limit: 10,
+//       },
+//       sorting: {
+//         sortBy: "ID",
+//         sortDirection: "ASC",
+//       },
+//       filter: {},
+//     });
+
+//     return response.data;
+//   },
+// });
+
+//   const size = Number(pageSize);
+//   const totalPages = Math.ceil(data.length / size);
+
+//   const paginatedData = data.slice(
+//     (activePage - 1) * size,
+//     activePage * size
+//   );
+
+//   return (
+//     <>
+//       <Group mb="sm">
+//         {onFilter && (
+//           <Button onClick={onFilter}>
+//             {t("tableData.filters")}
+//           </Button>
+//         )}
+
+//         {onAdd && (
+//           <Button onClick={onAdd}>
+//             {t("tableData.add")}
+//           </Button>
+//         )}
+//       </Group>
+
+//       <Box
+//         style={{
+//           background: isDark ? "#161d21" : "#fdfdfd",
+//           border: `1px solid ${isDark ? "#2c2f33" : "#d9d9d9"}`,
+//           borderRadius: 12,
+//           padding: 16,
+//         }}
+//       >
+//         <ScrollArea type="always" scrollbarSize={12}>
+//           <Table
+//             striped
+//             highlightOnHover
+//             withColumnBorders
+//             withTableBorder
+//             style={{ minWidth: 1200 }}
+//           >
+//             <thead>
+//               <tr>
+//                 {columns.map((col) => (
+//                   <th key={String(col.key)}>
+//                     {col.label}
+//                   </th>
+//                 ))}
+//               </tr>
+//             </thead>
+
+//             <tbody>
+//               {paginatedData.map((row: T) => (
+//                 <tr key={row.id}>
+//                   {columns.map((col) => (
+//                     <td key={String(col.key)}>
+//                       {String(row[col.key] ?? "")}
+//                     </td>
+//                   ))}
+//                 </tr>
+//               ))}
+//             </tbody>
+//           </Table>
+//         </ScrollArea>
+
+//         {data.length === 0 && !isLoading && (
+//           <Text ta="center" mt="md">
+//             {t("tableData.noData")}
+//           </Text>
+//         )}
+
+//         <Flex justify="flex-end" align="center" mt="md">
+//           <Group>
+//             <Text size="sm">
+//               {t("tableData.totalData")}: {data.length}
+//             </Text>
+
+//             <Pagination
+//               total={totalPages}
+//               value={activePage}
+//               onChange={setActivePage}
+//             />
+
+//             <Select
+//               value={pageSize}
+//               onChange={(value) => {
+//                 if (value) {
+//                   setPageSize(value);
+//                   setActivePage(1);
+//                 }
+//               }}
+//               data={["2", "5", "10", "20", "50", "100"]}
+//               w={100}
+//             />
+//           </Group>
+//         </Flex>
+//       </Box>
+//     </>
+//   );
+// }

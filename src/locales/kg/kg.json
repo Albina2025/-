@@ -140,22 +140,24 @@
         "model": "Жасалма интеллект модели",
         "title": "ЖИ кошуу",
 
-        "fields": {
-        "subject": "Субъект",
-        "platformType": "Эсептөө платформасынын түрү",
-        "equipmentName": "Жабдуунун аталышы",
-        "equipmentPurpose": "Жабдуунун максаты",
-        "ownerDepartment": "Жооптуу бөлүм (ээси)",
-        "equipmentSupplier": "Жабдуу жеткирүүчү",
-        "purchaseDate": "Сатып алынган дата",
-        "purchaseAmount": "Сатып алуу суммасы",
-        "currency": "Валюта",
-        "shortCharacteristics": "Кыскача мүнөздөмөлөр",
-        "aiModelName": "ЖИ моделинин аталышы",
-        "aiModelPurpose": "ЖИ моделинин максаты",
-        "aiModelDeveloper": "ЖИ моделин иштеп чыгуучу / жеткирүүчү",
-        "apiProvider": "API жеткирүүчү (эгер колдонулса)",
-        "useAPI": "API колдонулат"
+       
+
+         "fields": {
+            "ministryId": "Субъект",
+            "computePlatformTypeId": "Эсептөө платформасынын түрү",
+            "hardwareName": "Жабдуунун аталышы",
+            "hardwarePurpose": "Жабдуунун максаты",
+            "responsibleUnit": "Жооптуу бөлүм",
+            "hardwareSupplier": "Жабдуу жеткирүүчү",
+            "purchaseDate": "Сатып алынган дата",
+            "purchaseAmount": "Сатып алуу суммасы",
+            "purchaseCurrencyId": "Валюта",
+            "hardwareSpecs": "Кыскача мүнөздөмөлөр",
+            "modelName": "ЖИ моделинин аталышы",
+            "modelPurpose": "ЖИ моделинин максаты",
+            "modelDeveloper": "ЖИ моделин иштеп чыгуучу / жеткирүүчү",
+            "usesApi": "API колдонулат",
+            "apiProvider": "API жеткирүүчү"
         },
 
         "buttons": {
@@ -165,9 +167,14 @@
     },
 
     "aiFilter": {
+        "title": "Фильтр",
         "fields": {
             "subject": "Субъектти тандаңыз",
             "platformType": "Эсептөө платформасынын түрү"
+        },
+        "placeholders": {
+            "subject": "Субъектти тандаңыз",
+            "platformType": "Платформа түрүн тандаңыз"
         },
         "buttons": {
             "reset": "Тазалоо",

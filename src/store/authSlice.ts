@@ -16,8 +16,8 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  accessToken: null,
-  refreshToken: null,
+   accessToken: localStorage.getItem("accessToken"),
+  refreshToken: localStorage.getItem("refreshToken"),
   roles: [],
   menu: [],
   language: "RU",
@@ -43,9 +43,11 @@ const authSlice = createSlice({
       localStorage.setItem("accessToken", action.payload.accessToken);
       localStorage.setItem("refreshToken", action.payload.refreshToken);
 
-      if (action.payload.roles) state.roles = action.payload.roles;
-      if (action.payload.menu) state.menu = action.payload.menu;
-      if (action.payload.language) state.language = action.payload.language;
+      const { roles, menu, language } = action.payload;
+
+      if (roles) state.roles = roles;
+      if (menu) state.menu = menu;
+      if (language) state.language = language;
     },
 
     logout(state) {

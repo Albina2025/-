@@ -1,7 +1,14 @@
-import React from 'react'
-import  AppRouter  from './routes/AppRouter'
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { RouterProvider } from "react-router-dom";
+import { Notifications } from "@mantine/notifications";
+import { routes } from "./routes";
 
 export const App = () => {
-  return <AppRouter />
-}
-
+  return (
+    <MantineProvider>
+      <Notifications/>
+        <RouterProvider router={routes} />
+    </MantineProvider>
+  );
+};

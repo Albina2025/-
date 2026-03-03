@@ -23,14 +23,17 @@ interface CustomAxiosRequestConfig extends AxiosRequestConfig {
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_APP_API_TEST,
+   headers: {
+    "Content-Type": "application/json",
+  },
 });
-
+// console.log("BASE URL:", import.meta.env.VITE_APP_API_TEST);
 
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem("accessToken");
 
-    console.log("ACCESS:", token);
+    // console.log("ACCESS:", token);
 
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;

@@ -144,21 +144,21 @@
         "title": "Добавление ИИ",
 
         "fields": {
-        "subject": "Субъект",
-        "platformType": "Тип вычислительной платформы",
-        "equipmentName": "Наименование оборудования",
-        "equipmentPurpose": "Назначение оборудования",
-        "ownerDepartment": "Ответственное подразделение-владелец",
-        "equipmentSupplier": "Поставщик оборудования",
-        "purchaseDate": "Дата приобретения",
-        "purchaseAmount": "Сумма приобретения",
-        "currency": "Валюта суммы",
-        "shortCharacteristics": "Краткие характеристики",
-        "aiModelName": "Наименование модели ИИ",
-        "aiModelPurpose": "Назначение модели ИИ",
-        "aiModelDeveloper": "Разработчик / поставщик модели ИИ",
-        "apiProvider": "Поставщик API (если используется)",
-        "useAPI": "Используется API"
+            "ministryId": "Субъект",
+            "computePlatformTypeId": "Тип вычислительной платформы",
+            "hardwareName": "Наименование оборудования",
+            "hardwarePurpose": "Назначение оборудования",
+            "responsibleUnit": "Ответственное подразделение",
+            "hardwareSupplier": "Поставщик оборудования",
+            "purchaseDate": "Дата приобретения",
+            "purchaseAmount": "Сумма приобретения",
+            "purchaseCurrencyId": "Валюта",
+            "hardwareSpecs": "Краткие характеристики",
+            "modelName": "Наименование модели ИИ",
+            "modelPurpose": "Назначение модели ИИ",
+            "modelDeveloper": "Разработчик / поставщик модели ИИ",
+            "usesApi": "Используется API",
+            "apiProvider": "Поставщик API"
         },
          "currencyOptions": {
             "som": "Сом",
@@ -173,9 +173,14 @@
     },
 
     "aiFilter": {
+        "title": "Фильтр",
         "fields": {
             "subject": "Выберите субъект",
             "platformType": "Тип вычислительной платформы"
+        },
+        "placeholders": {
+            "subject": "Выберите субъект",
+            "platformType": "Выберите тип платформы"
         },
         "buttons": {
             "reset": "Сбросить",
