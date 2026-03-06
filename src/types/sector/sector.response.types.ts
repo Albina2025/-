@@ -1,8 +1,3 @@
-
-/* =========================
-   ITEM TYPES
-========================= */
-
 export interface SectorParent {
   id: number;
   titleKg: string;
@@ -19,9 +14,6 @@ export interface SectorItem {
   logo?: string;
 }
 
-/* =========================
-   SEARCH RESPONSE
-========================= */
 
 export interface SectorSearchResponse {
   page: number;
@@ -31,9 +23,6 @@ export interface SectorSearchResponse {
   content: SectorItem[];
 }
 
-/* =========================
-   GET ENABLED RESPONSE
-========================= */
 
 export interface SectorEnabledItem {
   id: number;

@@ -24,3 +24,9 @@ export const getSectorById = async (id: number) => {
 export const updateSector = (id: number, data: CreateSectorRequest) => {
   return api.put(`/api/v1/sector/${id}`, data);
 };
+
+
+export const changeSectorStatus = async (id: number,activation: boolean) => {
+  const response = await api.put(`/api/v1/sector/activation/${id}`, null, {params: {activation}});
+  return response.data;
+};

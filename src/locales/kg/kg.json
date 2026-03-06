@@ -24,7 +24,9 @@
         "actions": "Аракеттер"
     },
     "buttons": {
-        "edit": "Өзгөртүү"
+        "edit": "Түзөтүү",
+        "activate": "Активдештирүү",
+        "deactivate": "Өчүрүү"
     }, 
     "privateSectorModal": {
         "title": "Жеке сектор кошуу",
