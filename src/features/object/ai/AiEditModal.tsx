@@ -39,7 +39,7 @@ export const AiEditModal: React.FC<Props> = ({ opened, onClose, aiId }) => {
     },
   });
 
-  // AI маалыматтарын алуу
+
   const { data } = useQuery({
     queryKey: ["ai", aiId],
     queryFn: async () => {
@@ -49,7 +49,7 @@ export const AiEditModal: React.FC<Props> = ({ opened, onClose, aiId }) => {
     enabled: !!aiId,
   });
 
-  // Formду data келгенде жаңыртуу
+
   useEffect(() => {
     if (data) {
       form.setValues({
@@ -72,7 +72,7 @@ export const AiEditModal: React.FC<Props> = ({ opened, onClose, aiId }) => {
     }
   }, [data]);
 
-  // Update mutation
+
   const mutation = useMutation({
     mutationFn: async (values: CreateAiRequest) => {
       const res = await api.put(`/api/v1/ai/${aiId}`, values);
@@ -96,7 +96,7 @@ export const AiEditModal: React.FC<Props> = ({ opened, onClose, aiId }) => {
     },
   });
 
-  // Submit handler
+
   const handleSubmit = (values: AiFormValues) => {
     mutation.mutate({
       ...values,

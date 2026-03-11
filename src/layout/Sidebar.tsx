@@ -47,6 +47,21 @@ export const Sidebar: React.FC = () => {
         { label: t("sidebar.software"), path: "/objects/software" },
       ],
     },
+
+    {
+      key: "directories",
+      label: t("sidebar.directories"),
+      children: [
+        {
+          label: t("sidebar.controlGroups"),
+          path: "/directories/control-groups",
+        },
+        {
+          label: t("sidebar.criteria"),
+          path: "/directories/criteria",
+        },
+      ],
+    },
   ];
 
   const renderMenu = (items: MenuItem[], parentKey?: string) => {

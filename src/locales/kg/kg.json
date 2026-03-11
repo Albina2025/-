@@ -12,9 +12,14 @@
     "sidebar": {
         "subject": "Ведомстволор",
         "private-sector":"Жеке сектор",
+
         "object": "Системалар",
         "ai":"ЖИ",
-        "software":"ПК"
+        "software":"ПК",
+
+        "directories": "Каталогдор",
+        "controlGroups": "Контролдор тобу",
+        "criteria": "Критерийлер"
     },
     "tableData": {
         "filters":"Фильтрлер",

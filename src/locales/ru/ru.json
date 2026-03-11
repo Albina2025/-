@@ -14,9 +14,14 @@
     "sidebar": {
         "subject": "Субъекты",
         "private-sector": "Частный сектор",
+
         "object": "Объекты",
         "ai": "ИИ",
-        "software": "ПО"
+        "software": "ПО",
+
+        "directories": "Справочники",
+        "controlGroups": "Группа контролей",
+        "criteria": "Критерии"
     },
 
     "tableData": {

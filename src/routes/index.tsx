@@ -26,6 +26,14 @@ export const routes = createBrowserRouter([
             path: "/objects/software",
             element: <pages.SoftwarePage />,
           },
+          {
+            path: "/directories/control-groups",
+            element: <pages.ControlGroupsPage />,
+          },
+          {
+            path: "/directories/criteria",
+            element: <pages.CriteriaPage />,
+          },
         ],
       },
     ],

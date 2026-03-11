@@ -14,7 +14,7 @@ export type FilterField<T> =
         type: "text" | "number";
         name: keyof T & string;
         label: string;
-         placeholder?: string;
+        placeholder?: string;
         span?: number;
     }
   | {

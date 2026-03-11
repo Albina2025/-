@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { Menu, Button, Flex } from "@mantine/core";
-import { useMantineColorScheme } from "@mantine/core";
+import { Menu, Button, Flex, useMantineColorScheme } from "@mantine/core";
 import {  IconChevronRight, IconMenu2 } from "@tabler/icons-react";
 import { TableData, type Column } from "../../layout/tableData/TableData";
 import { getSoftwareList } from "../../services/software.service";

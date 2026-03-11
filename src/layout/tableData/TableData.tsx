@@ -1,18 +1,5 @@
-import {
-  Table,
-  Button,
-  Group,
-  Pagination,
-  Select,
-  Flex,
-  Box,
-  ScrollArea,
-  Text,
-} from '@mantine/core';
-import { useMantineColorScheme } from '@mantine/core';
+import {Table,Button,Group,Pagination,Select,Flex,Box,ScrollArea,Text,useMantineColorScheme} from '@mantine/core';
 import { useTranslation } from "react-i18next";
-
-
 export interface Column<T> {
   key: keyof T | "action";
   label: string;
@@ -33,8 +20,6 @@ interface TableDataProps<T> {
   onFilter?: () => void;
 }
 
- 
-
 export function TableData<T extends { id: number }>({
   columns,
   data,
@@ -50,8 +35,6 @@ export function TableData<T extends { id: number }>({
   const { colorScheme } = useMantineColorScheme();
   const isDark = colorScheme === "dark";
   const { t } = useTranslation();
-
-  
 
   return (
     <>

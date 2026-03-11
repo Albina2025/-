@@ -32,7 +32,7 @@ export const AiForm: React.FC<Props> = ({ form, onSubmit, loading, onCancel }) =
         <Divider mb="md" />
 
         <form onSubmit={form.onSubmit(onSubmit)}>
-          {/* Hardware Section */}
+        
           <Grid>
             <Grid.Col span={6}>
               <FloatingSelect
@@ -128,7 +128,7 @@ export const AiForm: React.FC<Props> = ({ form, onSubmit, loading, onCancel }) =
             </Grid.Col>
           </Grid>
 
-          {/* Model Section */}
+      
           <Divider my="md" />
           <Grid>
             <Grid.Col span={6}>
@@ -153,7 +153,7 @@ export const AiForm: React.FC<Props> = ({ form, onSubmit, loading, onCancel }) =
             </Grid.Col>
           </Grid>
 
-          {/* API Section */}
+         
           <Divider my="md" />
           <Grid>
             <Grid.Col span={12}>
