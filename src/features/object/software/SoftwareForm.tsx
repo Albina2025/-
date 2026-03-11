@@ -40,6 +40,10 @@ export const SoftwareForm: React.FC<Props> = ({ form, onSubmit, loading, onCance
                 type="number"
                 labelText={t("softwareModal.fields.subject")}
                 {...form.getInputProps("ministryId")}
+                searchable
+                clearable
+                value={form.values.ministryId?.toString() ?? ""}
+                onChange={(value) => form.setFieldValue("parentId", value ? Number(value) : undefined)}
               />
             </Grid.Col>
 

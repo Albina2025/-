@@ -34,7 +34,7 @@ export const PrivateSectorForm: React.FC<Props> = ({ defaultValues, onSubmit }) 
   useEffect(() => {
     const fetchParents = async () => {
       try {
-        const { data } = await api.post<{ content: SectorItem[] }>("/api/v1/sector/get-enabled", {
+        const { data } = await api.post<{ content: SectorItem[] }>("/api/v1/criteria/search", {
           pageRequest: { page: 0, limit: 100 },
           sorting: { sortBy: "ID", sortDirection: "ASC" },
           filter: {},

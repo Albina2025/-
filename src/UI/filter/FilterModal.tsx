@@ -72,7 +72,7 @@ export function FilterModal<T extends Record<string, unknown>>({
       opened={opened}
       onClose={onClose}
       centered
-      size="lg"
+      size="1200"
       withCloseButton={false}
       radius={15}
     >

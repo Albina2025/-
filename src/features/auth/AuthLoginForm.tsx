@@ -3,11 +3,11 @@ import {
   Grid,
   Text,
   Title,
-  TextInput,
   PasswordInput,
   Button,
   Container,
   Stack,
+  TextInput,
 } from "@mantine/core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -181,7 +181,7 @@ export const AuthLoginForm = () => {
                             fontSize: 20,
                             padding: "0 15px",
                         },
-                        label: { color: "white", fontSize: 14, marginBottom: 4 },
+                        label: {  fontSize: 14, marginBottom: 4 },
                       }}
                       visibilityToggleIcon={({ reveal }) =>
                         reveal ? <IconEye size={24} /> : <IconEyeOff size={24}   />
