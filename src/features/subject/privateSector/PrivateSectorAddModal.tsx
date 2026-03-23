@@ -4,7 +4,7 @@ import { BaseModal, BaseButton } from "../../../UI/index";
 import { PrivateSectorForm } from "./index";
 import { api } from "../../../api/axios";
 import { useTranslation } from "react-i18next";
-import type { SectorFormValues } from "../../../types/sector/sector.form.types";
+import type { SectorFormValues } from "../../../entities/sector/types/sector.form.types";
 import { useRef } from "react";
 
 interface Props {

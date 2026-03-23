@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { zodResolver } from "mantine-form-zod-resolver";
 import { api } from "../../../api/axios";
 import { softwareSchema, type SoftwareFormValues } from "../../../schemas/software.schema";
-import type {  SoftwareSearchResponse } from "../../../types/software/software.response.types";
+import type {  SoftwareSearchResponse } from "../../../entities/software/software.response.types";
 
 interface Props {
   defaultValues?: SoftwareFormValues;

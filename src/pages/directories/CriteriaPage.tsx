@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { TableData, type Column } from "../../layout/tableData/TableData";
 import {CriteriaAddModal,CriteriaEditModal} from "../../features/directories/criteria/index";
 import { api } from "../../api/axios";
-import type {CriteriaSearchRequest} from "../../types/criteria/criteria.request.types";
-import type {CriteriaSearchResponse} from "../../types/criteria/criteria.response.types";
-import type {CriteriaItem} from "../../types/criteria/criteria.item.types"
+import type {CriteriaSearchRequest} from "../../entities/criteria/criteria.request.types";
+import type {CriteriaSearchResponse} from "../../entities/criteria/criteria.response.types";
+import type {CriteriaItem} from "../../entities/criteria/criteria.item.types"
 import {Button,Flex,Menu,useMantineColorScheme} from "@mantine/core";
 import {IconChevronRight,IconMenu2,IconCheck,IconX} from "@tabler/icons-react";
 import { changeCriteriaStatus } from "../../services/criteria.service";

@@ -134,8 +134,8 @@ import { api } from "../../../api/axios"
 import { useTranslation } from "react-i18next"
 
 import { privateSectorSchema, type PrivateSectorFormValues } from "../../../schemas/privateSector.schema"
-import type { SectorFormValues } from "../../../types/sector/sector.form.types"
-import type { SectorItem } from "../../../types/sector/sector.response.types"
+import type { SectorFormValues } from "../../../entities/sector/types/sector.form.types"
+import type { SectorItem } from "../../../entities/sector/types/sector.response.types"
 
 interface Props {
   defaultValues?: SectorFormValues

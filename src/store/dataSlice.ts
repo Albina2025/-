@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { BaseItem } from '../types/dataTypes';
+import type { BaseItem } from '../entities/dataTypes';
 
 interface DataState {
   items: BaseItem[];

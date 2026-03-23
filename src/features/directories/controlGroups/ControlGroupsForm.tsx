@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { api } from "../../../api/axios"
 import { useTranslation } from "react-i18next"
 import type { ControlGroupsFormValues } from "../../../schemas/controlGroups.schema"
-import type { ControlGroupsItem } from "../../../types/control/controlGroups.item.types"
+import type { ControlGroupsItem } from "../../../entities/control/controlGroups.item.types"
 import { zodResolver } from "mantine-form-zod-resolver"
 import { controlGroupsSchema } from "../../../schemas/controlGroups.schema"
 

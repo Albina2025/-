@@ -1,7 +1,7 @@
 import { api } from "../api/axios";
-import type {CreateSectorRequest, SectorSearchRequest} from "../types/sector/sector.request.types";
-import type { SectorSearchResponse } from "../types/sector/sector.response.types";
-import type { SectorItem } from "../types/sector/sector.response.types";
+import type {CreateSectorRequest, SectorSearchRequest} from "../entities/sector/types/sector.request.types";
+import type { SectorSearchResponse } from "../entities/sector/types/sector.response.types";
+import type { SectorItem } from "../entities/sector/types/sector.response.types";
 
 
 

@@ -1,6 +1,6 @@
 import { api } from "../api/axios"
-import type { ControlGroupsItem } from "../types/control/controlGroups.item.types"
-import type { ControlGroupsFormValues } from "../types/control/controlGroups.form.types"
+import type { ControlGroupsItem } from "../entities/control/controlGroups.item.types"
+import type { ControlGroupsFormValues } from "../entities/control/controlGroups.form.types"
 
 export const getControlGroupById = async (
   id: number

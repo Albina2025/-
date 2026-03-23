@@ -5,7 +5,7 @@ import { ControlGroupsForm } from "./ControlGroupsForm"
 import { createControlGroup } from "../../../services/controlGroups.service"
 import { useTranslation } from "react-i18next"
 
-import type { ControlGroupsFormValues } from "../../../types/control/controlGroups.form.types"
+import type { ControlGroupsFormValues } from "../../../entities/control/controlGroups.form.types"
 import { useRef } from "react"
 
 interface Props {

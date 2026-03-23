@@ -62,6 +62,16 @@ export const Sidebar: React.FC = () => {
         },
       ],
     },
+    {
+      key: "user",
+      label: t("sidebar.user"),
+      children: [
+        {
+          label: t("sidebar.users"),
+          path: "/user/users",
+        },
+      ],
+    },
   ];
 
   const renderMenu = (items: MenuItem[], parentKey?: string) => {

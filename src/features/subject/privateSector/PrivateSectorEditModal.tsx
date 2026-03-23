@@ -5,8 +5,8 @@ import { PrivateSectorForm } from "./index";
 import { getSectorById, updateSector } from "../../../services/sector.service";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import type { SectorFormValues } from "../../../types/sector/sector.form.types";
-import type { SectorItem } from "../../../types/sector/sector.response.types";
+import type { SectorFormValues } from "../../../entities/sector/types/sector.form.types";
+import type { SectorItem } from "../../../entities/sector/types/sector.response.types";
 import { useRef } from "react";
 
 

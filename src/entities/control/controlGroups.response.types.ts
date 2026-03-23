@@ -1,4 +1,4 @@
-import type { ControlGroupsItem } from "./ControlGroups.item.types"
+import type { ControlGroupsItem } from "./controlGroups.item.types"
 
 export interface ControlGroupsSearchResponse {
   page: number

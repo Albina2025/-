@@ -5,7 +5,7 @@ import { CriteriaForm } from "./CriteriaForm";
 import { api } from "../../../api/axios";
 import { useTranslation } from "react-i18next";
 
-import type { CriteriaFormValues } from "../../../types/criteria/criteria.form.types";
+import type { CriteriaFormValues } from "../../../entities/criteria/criteria.form.types";
 import { useRef } from "react";
 
 interface Props {

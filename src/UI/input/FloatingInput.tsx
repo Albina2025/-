@@ -28,7 +28,7 @@ export const FloatingInput: React.FC<FloatingInputProps> = ({
     <TextInput
       {...props}
       value={value}
-      label={labelText}
+      label={labelText }
        required={required}
       placeholder={focused || hasValue ? "" : required  ? `${labelText} *`  : labelText}
       onFocus={() => setFocused(true)}

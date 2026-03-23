@@ -19,7 +19,10 @@
 
         "directories": "Каталогдор",
         "controlGroups": "Контролдор тобу",
-        "criteria": "Критерийлер"
+        "criteria": "Критерийлер",
+
+        "user": "Колдонуучу",
+        "users": "Колдонуучулар"
     },
     "tableData": {
         "filters":"Фильтрлер",
@@ -225,6 +228,34 @@
             "titleRu": "Орусча аталышы",
             "titleKg": "Кыргызча аталышы",
             "parentId": "Жогорку топ"
+        }
+    },
+
+    "userModal": {
+        "title": "Колдонуучу кошуу",
+        "editTitle": "Колдонуучуну өзгөртүү",
+
+        "fields": {
+            "username": "Логин",
+            "password": "Пароль",
+            "name": "Аты",
+            "surname": "Фамилиясы",
+            "patronymic": "Атасынын аты",
+            "phone": "Телефон",
+            "email": "Электрондук почта",
+            "dateOfBirth": "Туулган күнү",
+            "ministry": "Субъект",
+            "division": "Бөлүм",
+            "roles": "Роль",
+            "position": "Кызматы",
+            "photo": "Сүрөт"
+        },
+
+        "buttons": {
+            "cancel": "Жокко чыгаруу",
+            "confirm": "Тастыктоо",
+            "upload": "Сүрөт жүктөө",
+            "clear": "Тазалоо"
         }
     }
 

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "../layout/MainLayout";
+import { MainLayout } from "../../layout/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
-import * as pages from "../pages";
+import * as pages from "../../pages";
 
 export const routes = createBrowserRouter([
   {
@@ -33,6 +33,10 @@ export const routes = createBrowserRouter([
           {
             path: "/directories/criteria",
             element: <pages.CriteriaPage />,
+          },
+           {
+            path: "/user/users",
+            element: <pages.UserPage />,
           },
         ],
       },

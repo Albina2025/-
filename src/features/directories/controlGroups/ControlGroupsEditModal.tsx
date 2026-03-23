@@ -7,7 +7,7 @@ import { ControlGroupsForm } from "./ControlGroupsForm"
 import { getControlGroupById, updateControlGroup } from "../../../services/controlGroups.service"
 import { useTranslation } from "react-i18next"
 import type { ControlGroupsFormValues } from "../../../schemas/controlGroups.schema"
-import type { ControlGroupsItem } from "../../../types/control/controlGroups.item.types"
+import type { ControlGroupsItem } from "../../../entities/control/controlGroups.item.types"
 
 interface Props {
   opened: boolean

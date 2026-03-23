@@ -6,7 +6,7 @@ import { FloatingInput, FloatingSelect } from "../../../UI"
 import { api } from "../../../api/axios"
 import { useTranslation } from "react-i18next"
 
-import type { CriteriaItem } from "../../../types/criteria/criteria.item.types"
+import type { CriteriaItem } from "../../../entities/criteria/criteria.item.types"
 import { zodResolver } from "mantine-form-zod-resolver"
 import { criteriaSchema, type CriteriaFormValues } from "../../../schemas/criteria.schema"
 

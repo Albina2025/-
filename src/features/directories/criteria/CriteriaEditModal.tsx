@@ -15,8 +15,8 @@ import {
   getCriteriaById,
   updateCriteria,
 } from "../../../services/criteria.service";
-import type { CriteriaItem } from "../../../types/criteria/criteria.item.types";
-import type { CriteriaFormValues } from "../../../types/criteria/criteria.form.types";
+import type { CriteriaItem } from "../../../entities/criteria/criteria.item.types";
+import type { CriteriaFormValues } from "../../../entities/criteria/criteria.form.types";
 import { useRef } from "react";
 
 interface Props {

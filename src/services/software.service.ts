@@ -1,5 +1,5 @@
 import { api } from "../api/axios";
-import type {SoftwareCreateRequest,SoftwareSearchRequest} from "../types/software/software.request.types";
+import type {SoftwareCreateRequest,SoftwareSearchRequest} from "../entities/software/software.request.types";
 
 export const createSoftware = (data: SoftwareCreateRequest) =>
   api.post("/api/v1/software", data);

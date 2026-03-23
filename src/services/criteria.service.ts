@@ -1,5 +1,5 @@
 import { api } from "../api/axios"
-import type { CriteriaFormValues } from "../types/criteria/criteria.form.types"
+import type { CriteriaFormValues } from "../entities/criteria/criteria.form.types"
 
 export const getCriteriaById = async (id: number) => {
   const { data } = await api.get(`/api/v1/criteria/${id}`)

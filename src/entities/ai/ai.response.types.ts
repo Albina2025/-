@@ -1,4 +1,4 @@
-
+import type { AiItem } from "./ai.item.types";
 
 export interface AiSelectResponse {
     page: number;

@@ -1,7 +1,7 @@
 import { api } from "../api/axios";
-import type { CreateAiRequest, AiSearchRequest} from "../types/ai/ai.request.types"
-import type {AiSelectResponse} from "../types/ai/ai.response.types"
-import type { SectorFormValues } from "../types/sector/sector.form.types";
+import type { CreateAiRequest, AiSearchRequest} from "../entities/ai/ai.request.types"
+import type {AiSelectResponse} from "../entities/ai/ai.response.types"
+import type { SectorFormValues } from "../entities/sector/types/sector.form.types";
 
 
 export const getSectorById = async (id: number) => {

@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Menu, Button, Flex, useMantineColorScheme } from "@mantine/core";
 import {  IconChevronRight, IconMenu2 } from "@tabler/icons-react";
 import { TableData, type Column } from "../../layout/tableData/TableData";
-import type {SoftwareSearchRequest } from "../../types/software/software.request.types";
-import type { SoftwareSearchResponse } from "../../types/software/software.response.types";
-import type { SoftwareItem } from "../../types/software/software.response.types";
+import type {SoftwareSearchRequest } from "../../entities/software/software.request.types";
+import type { SoftwareSearchResponse } from "../../entities/software/software.response.types";
+import type { SoftwareItem } from "../../entities/software/software.response.types";
 import {SoftwareAddModal, SoftwareEditModal} from "../../features/object/software/index"
 import { FilterModal } from "../../UI/filter/FilterModal";
 import {softwareFilterFields, softwareFilterInitialValues, type SoftwareFilter} from "../../filters/software.filters";
